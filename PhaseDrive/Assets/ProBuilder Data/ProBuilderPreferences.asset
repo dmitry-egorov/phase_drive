@@ -15,6 +15,10 @@ MonoBehaviour:
   m_Bool_keys:
   - pbIconGUI
   - pbDefaultOpenInDockableWindow
+  - pbStripProBuilderOnBuild
+  - pbDisableAutoUV2Generation
+  - pbForceConvex
+  - pbMeshesAreAssets
   m_Int_keys:
   - pbHandleAlignment
   - pbDefaultEditLevel
@@ -23,6 +27,9 @@ MonoBehaviour:
   - pbVertexColorTool
   - pbExtrudeMethod
   - pbMirrorObjectScale
+  - pbDefaultCollider
+  - pbShadowCastingMode
+  - pbDefaultStaticFlags
   m_Float_keys:
   - pbEditorScroll.x
   - pbEditorScroll.y
@@ -32,9 +39,10 @@ MonoBehaviour:
   m_String_keys:
   - pbCurrentMaterialPalette
   m_Color_keys: []
-  m_Material_keys: []
-  m_Bool_values: 0101
-  m_Int_values: 0200000000000000020000000000000001000000010000000c000000
+  m_Material_keys:
+  - pbDefaultMaterial
+  m_Bool_values: 010101000001
+  m_Int_values: 0200000000000000000000000000000001000000010000000c000000020000000200000000000000
   m_Float_values:
   - 0
   - 0
@@ -44,4 +52,5 @@ MonoBehaviour:
   m_String_values:
   - Assets/ProBuilder Data/Default Material Palette.asset
   m_Color_values: []
-  m_Material_values: []
+  m_Material_values:
+  - {fileID: 2100000, guid: f8af10ae2c674e569782e57b09c76a13, type: 2}

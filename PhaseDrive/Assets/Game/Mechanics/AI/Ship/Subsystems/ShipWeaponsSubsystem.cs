@@ -12,7 +12,7 @@ public class ShipWeaponsSubsystem : MonoBehaviour
 
     public Quaternion? GetOptimalRotation()
     {
-        //TODO: get some combination of all the targets
+        //TODO: get some combination of all targets
         if (!PossibleShip.TryGetValue(out var ship))
             return default;
 
