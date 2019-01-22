@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ProceduralPlanet : MonoBehaviour
+public class VertexProceduralPlanet : MonoBehaviour
 {
     [Range(2, 256)]
     public int resolution;

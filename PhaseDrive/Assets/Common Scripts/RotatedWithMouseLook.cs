@@ -5,7 +5,6 @@ public class RotatedWithMouseLook : MonoBehaviour
 {
     public float speed = 1.0f;
 
-
     void Start()
     {
         _rotation = transform.eulerAngles;
@@ -23,8 +22,8 @@ public class RotatedWithMouseLook : MonoBehaviour
 
             var x = _rotation.x + d.x;
             var y = _rotation.y + d.y;
-            if (x > 90f) x = 90f;
-            if (x < -90f) x = -90f;
+            if (x > 89f) x = 89f;
+            if (x < -89f) x = -89f;
 
             transform.eulerAngles = new Vector3(x, y, transform.eulerAngles.z);
 

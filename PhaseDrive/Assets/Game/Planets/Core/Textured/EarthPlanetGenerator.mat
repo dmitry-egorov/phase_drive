@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EarthGeneration
-  m_Shader: {fileID: 4800000, guid: 59c0789e224e8479890050896e6b1692, type: 3}
+  m_Name: EarthPlanetGenerator
+  m_Shader: {fileID: 4800000, guid: 81e8b13509bfc55458c5c83e576a53af, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

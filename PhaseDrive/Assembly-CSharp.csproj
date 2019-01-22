@@ -65,6 +65,8 @@
     <Compile Include="Assets\Common Scripts\RotatedWithMouseLook.cs" />
     <Compile Include="Assets\Common Scripts\SyncWorldPosition.cs" />
     <Compile Include="Assets\Common Scripts\SyncWorldRotation.cs" />
+    <Compile Include="Assets\Common Scripts\ZoomWithMouseWheel.cs" />
+    <Compile Include="Assets\Game\Background\Background.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\ShipAI.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipNavigationSubsystem.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipWeaponsSubsystem.cs" />
@@ -75,12 +77,21 @@
     <Compile Include="Assets\Game\Mechanics\Destructable.cs" />
     <Compile Include="Assets\Game\Mechanics\Mount.cs" />
     <Compile Include="Assets\Game\Mechanics\Mountable.cs" />
-    <Compile Include="Assets\Game\Planets\Core\Noise.cs" />
-    <Compile Include="Assets\Game\Planets\Core\ProceduralPlanet.cs" />
+    <Compile Include="Assets\Game\Planets\Core\Textured\TexturedProceduralPlanet.cs" />
+    <Compile Include="Assets\Game\Planets\Core\Vertex\Noise.cs" />
+    <Compile Include="Assets\Game\Planets\Core\Vertex\VertexProceduralPlanet.cs" />
     <Compile Include="Assets\Script Tools\ArrayTryGetFirstItemExtension.cs" />
     <Compile Include="Assets\Script Tools\GameObjectAddSubsystemExtension.cs" />
     <Compile Include="Assets\Script Tools\NullableTryGetValueExtension.cs" />
     <Compile Include="Assets\Script Tools\ReferenceTryGetValueExtension.cs" />
+    <Compile Include="Assets\VirtualSpaceBackgroundManager.cs" />
+    <None Include="Assets\Game\Planets\Core\Textured\Runtime.shader" />
+    <None Include="Assets\Game\Background\BackgroundFragment.cginc" />
+    <None Include="Assets\Game\Planets\Core\Textured\Generator.shader" />
+    <None Include="Assets\Shader Tools\SimplexNoise.cginc" />
+    <None Include="Assets\Game\Background\Background.shader" />
+    <None Include="Assets\Game\Background\Noise.cginc" />
+    <None Include="Assets\Shader Tools\Common.cginc" />
     <Reference Include="Cinemachine">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>

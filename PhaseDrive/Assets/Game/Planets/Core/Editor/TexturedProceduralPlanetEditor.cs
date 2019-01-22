@@ -1,8 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(VertexProceduralPlanet))]
-public class ProceduralPlanetEditor : Editor
+[CustomEditor(typeof(TexturedProceduralPlanet))]
+public class TexturedProceduralPlanetEditor : Editor
 {
     public override void OnInspectorGUI()
     {
@@ -23,8 +23,8 @@ public class ProceduralPlanetEditor : Editor
 
     private void OnEnable()
     {
-        _planet = (VertexProceduralPlanet) target;
+        _planet = (TexturedProceduralPlanet) target;
     }
 
-    private VertexProceduralPlanet _planet;
+    private TexturedProceduralPlanet _planet;
 }
