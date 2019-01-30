@@ -67,6 +67,7 @@
     <Compile Include="Assets\Common Scripts\SyncWorldRotation.cs" />
     <Compile Include="Assets\Common Scripts\ZoomWithMouseWheel.cs" />
     <Compile Include="Assets\Game\Background\Background.cs" />
+    <Compile Include="Assets\Game\Background\SunLight.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\ShipAI.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipNavigationSubsystem.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipWeaponsSubsystem.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\Subsystems\WeaponTargetsQueueSubsystem.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\WeaponAI.cs" />
     <Compile Include="Assets\Game\Mechanics\Destructable.cs" />
+    <Compile Include="Assets\Game\Mechanics\Globals\Orbit.cs" />
+    <Compile Include="Assets\Game\Mechanics\Globals\Time.cs" />
     <Compile Include="Assets\Game\Mechanics\Mount.cs" />
     <Compile Include="Assets\Game\Mechanics\Mountable.cs" />
     <Compile Include="Assets\Game\Planets\Core\Textured\TexturedProceduralPlanet.cs" />
@@ -84,7 +87,6 @@
     <Compile Include="Assets\Script Tools\GameObjectAddSubsystemExtension.cs" />
     <Compile Include="Assets\Script Tools\NullableTryGetValueExtension.cs" />
     <Compile Include="Assets\Script Tools\ReferenceTryGetValueExtension.cs" />
-    <Compile Include="Assets\VirtualSpaceBackgroundManager.cs" />
     <None Include="Assets\Game\Planets\Core\Textured\Runtime.shader" />
     <None Include="Assets\Game\Background\BackgroundFragment.cginc" />
     <None Include="Assets\Game\Planets\Core\Textured\Generator.shader" />
@@ -94,9 +96,6 @@
     <None Include="Assets\Shader Tools\Common.cginc" />
     <Reference Include="Cinemachine">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
@@ -116,8 +115,8 @@
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
+      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
@@ -130,6 +129,9 @@
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Editor">
+      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
@@ -341,12 +343,6 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -355,21 +351,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderCore">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderCore.dll</HintPath>
-    </Reference>
-    <Reference Include="ProBuilderMeshOps">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.probuilder@3.0.9/ProBuilder/Classes/ProBuilderMeshOps.dll</HintPath>
-    </Reference>
-    <Reference Include="KdTreeLib">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="pb_Stl">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
-    </Reference>
-    <Reference Include="Poly2Tri">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/PackageCache/com.unity.probuilder@3.0.9/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

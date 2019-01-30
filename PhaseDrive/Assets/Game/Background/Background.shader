@@ -35,7 +35,8 @@ Shader "Skybox/Background"
 				v4 fc = UnityObjectToClipPos(v);
 				o.pos = fc;
 
-				fc.y = rs.y - fc.y;
+				// inverts when MSAA is disabled
+				//fc.y = rs.y - fc.y;
 
 				v2 sp = screen_point(fc.xy, rs);
 
@@ -62,7 +63,9 @@ Shader "Skybox/Background"
             {
 				v2 fc = i.pos.xy; // frag coordinate
 				v2 rs = _ScreenParams.xy; // screen resolution
-				fc.y = rs.y-fc.y;
+
+				// inverts when MSAA is disabled
+				//fc.y = rs.y-fc.y;
 
 				m3 C = (m3)_CameraTransform; // camera transform
 				//m3 C = (m3)unity_CameraToWorld; // camera transform

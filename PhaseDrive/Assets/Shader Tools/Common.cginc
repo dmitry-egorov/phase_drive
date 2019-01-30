@@ -13,6 +13,7 @@
 #define m4 float4x4
 #define fract frac
 #define mix lerp
+#define v2_0 v2(0.0, 0.0)
 #define v3_0 v3(0.0, 0.0, 0.0)
 #define v3_1 v3(1.0, 1.0, 1.0)
 #define v4_0 v4(0.0, 0.0, 0.0, 0.0)

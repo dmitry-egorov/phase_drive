@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
+[ExecuteInEditMode]
 public class RotatedWithMouseLook : MonoBehaviour
 {
     public float speed = 1.0f;

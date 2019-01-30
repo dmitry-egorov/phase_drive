@@ -3,20 +3,35 @@
 [ExecuteInEditMode]
 public class Background : MonoBehaviour
 {
+    public float distance;
     public Material material;
-    //public int horizontalResolution = 320;
-    //public int verticalResolution = 240;
 
-    // Called by camera to apply image effect
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    // Update is called once per frame
+    void Update()
     {
-        // To draw the shader at full resolution, use: 
-        Graphics.Blit (source, destination, material);
+        if (_camera == null)
+            _camera = GetComponent<Camera>();
+        if (_orbit == null)
+            _orbit = FindObjectOfType<Orbit>();
 
-        // To draw the shader at scaled down resolution, use:
-//        RenderTexture scaled = RenderTexture.GetTemporary(horizontalResolution, verticalResolution);
-//        Graphics.Blit(source, scaled, material);
-//        Graphics.Blit(scaled, destination);
-//        RenderTexture.ReleaseTemporary(scaled);
+        // camera movement
+        var wt = _orbit.camera_rotation;
+        var d = distance;
+        var o = wt * new Vector3(0, 0, -d);
+        var W = Matrix4x4.TRS(o, wt, Vector3.one);
+
+        var c = _camera;
+        var V = Matrix4x4.Rotate(c.transform.rotation); // view transform matrix
+
+        var C = W * V;
+
+        C.SetRow(3, new Vector4(o.x, o.y, o.z, 1));
+
+        //C = vtm;
+
+        material.SetMatrix("_CameraTransform", C);
     }
+
+    private Camera _camera;
+    private Orbit _orbit;
 }

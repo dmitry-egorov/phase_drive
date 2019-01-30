@@ -739,6 +739,8 @@ void sun_visibility
 	v1 ho = 0.13; // extra height (TODO: calculate from sun size)
 
 	ov = 0.0;
+	ssd = 0.0;
+	fsp = v2_0;
 
 	v1  h = outer_atmosphere_height(ro, sd, pc, pr, atr);
 	v1 eh = sat((h + ho) / (1. + ho)); // extended height
@@ -747,7 +749,6 @@ void sun_visibility
 
 	v3  sfd = h > 0.0 ? _SunDirection : suns_horizon(ro); // sun flare direction
 	v3 rfsp = ray_to_screen(sfd, C, ft); // sun flare screen position
-
 
 	v1 sm = 0.2; // screen visibility margin
 	v1 sv = step(0.0, rfsp.z) * sat(sstep(abs(rfsp.x), ar + sm, sm) * sstep(abs(rfsp.y), 1.0 + sm, sm)); // screen visibility
@@ -996,7 +997,7 @@ v4 background
 	c += transparent_objects(ro, rd, ps, sp, sov, ssd, fsp);
 #endif
 
-	c = pow(c, (1. / 2.2)*v3_1);
+	//c = pow(c, (1. / 2.2)*v3_1);
 	c += dither(fc, t, 100.);
 	return v4(c, 1.0);
 }
