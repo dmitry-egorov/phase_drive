@@ -66,8 +66,6 @@
     <Compile Include="Assets\Common Scripts\SyncWorldPosition.cs" />
     <Compile Include="Assets\Common Scripts\SyncWorldRotation.cs" />
     <Compile Include="Assets\Common Scripts\ZoomWithMouseWheel.cs" />
-    <Compile Include="Assets\Game\Background\Background.cs" />
-    <Compile Include="Assets\Game\Background\SunLight.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\ShipAI.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipNavigationSubsystem.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipWeaponsSubsystem.cs" />
@@ -76,23 +74,26 @@
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\Subsystems\WeaponTargetsQueueSubsystem.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\WeaponAI.cs" />
     <Compile Include="Assets\Game\Mechanics\Destructable.cs" />
-    <Compile Include="Assets\Game\Mechanics\Globals\Orbit.cs" />
+    <Compile Include="Assets\Game\Mechanics\Globals\Location.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\Time.cs" />
     <Compile Include="Assets\Game\Mechanics\Mount.cs" />
     <Compile Include="Assets\Game\Mechanics\Mountable.cs" />
     <Compile Include="Assets\Game\Planets\Core\Textured\TexturedProceduralPlanet.cs" />
     <Compile Include="Assets\Game\Planets\Core\Vertex\Noise.cs" />
     <Compile Include="Assets\Game\Planets\Core\Vertex\VertexProceduralPlanet.cs" />
+    <Compile Include="Assets\Game\Scenery\Background.cs" />
+    <Compile Include="Assets\Game\Scenery\Grayscale.cs" />
+    <Compile Include="Assets\Game\Scenery\SunLight.cs" />
     <Compile Include="Assets\Script Tools\ArrayTryGetFirstItemExtension.cs" />
     <Compile Include="Assets\Script Tools\GameObjectAddSubsystemExtension.cs" />
     <Compile Include="Assets\Script Tools\NullableTryGetValueExtension.cs" />
     <Compile Include="Assets\Script Tools\ReferenceTryGetValueExtension.cs" />
     <None Include="Assets\Game\Planets\Core\Textured\Runtime.shader" />
-    <None Include="Assets\Game\Background\BackgroundFragment.cginc" />
+    <None Include="Assets\Game\Scenery\BackgroundFragment.cginc" />
+    <None Include="Assets\Game\Scenery\Resources\Grayscale.shader" />
     <None Include="Assets\Game\Planets\Core\Textured\Generator.shader" />
     <None Include="Assets\Shader Tools\SimplexNoise.cginc" />
-    <None Include="Assets\Game\Background\Background.shader" />
-    <None Include="Assets\Game\Background\Noise.cginc" />
+    <None Include="Assets\Game\Scenery\Background.shader" />
     <None Include="Assets\Shader Tools\Common.cginc" />
     <Reference Include="Cinemachine">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
@@ -115,9 +116,6 @@
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
@@ -129,9 +127,6 @@
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.HighDefinition.Editor">
-      <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>E:/business/PhaseDrive/PhaseDrive/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>

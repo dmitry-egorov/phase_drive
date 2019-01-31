@@ -14,6 +14,7 @@ ModelImporter:
     100016: Armor Bottom Connector
     100018: Armor Bottom Nozzle
     100020: Armor Top Hatch
+    100022: Circle
     400000: //RootNode
     400002: Armor Bottom
     400004: Armor Top
@@ -25,9 +26,15 @@ ModelImporter:
     400016: Armor Bottom Connector
     400018: Armor Bottom Nozzle
     400020: Armor Top Hatch
+    400022: Circle
     2100000: Material
     2100002: Paint
     2100004: Heat
+    2100006: Adamantine Armor
+    2100008: Heat Paint
+    2100010: White Paint
+    2100012: Adamantine Armor Phase
+    2100014: Hull
     2300000: Armor Bottom
     2300002: Armor Top
     2300004: Hull
@@ -38,6 +45,7 @@ ModelImporter:
     2300014: Armor Bottom Connector
     2300016: Armor Bottom Nozzle
     2300018: Armor Top Hatch
+    2300020: Circle
     3300000: Armor Bottom
     3300002: Armor Top
     3300004: Hull
@@ -48,6 +56,7 @@ ModelImporter:
     3300014: Armor Bottom Connector
     3300016: Armor Bottom Nozzle
     3300018: Armor Top Hatch
+    3300020: Circle
     4300000: Armor Top
     4300002: Armor Bottom
     4300004: Hull
@@ -58,12 +67,38 @@ ModelImporter:
     4300014: Armor Bottom Connector
     4300016: Armor Bottom Nozzle
     4300018: Armor Top Hatch
+    4300020: Circle
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Adamantine Armor
+    second: {fileID: 2100000, guid: 5df63b9aba796004bb1f2ef9a38a09c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Adamantine Armor Phase
+    second: {fileID: 2100000, guid: 32285736ecea6c041a70d9f9d3d6364e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Heat Paint
+    second: {fileID: 2100000, guid: 19e1a5aed0f764a468217619946a0917, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hull
+    second: {fileID: 2100000, guid: 983f49b93d8b3114e94b7be5f6f7500e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White Paint
+    second: {fileID: 2100000, guid: c5097c3ab8c8d8a469f23c7b436c6044, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
-    materialSearch: 1
+    materialName: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -93,7 +128,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
+    useSRGBMaterialColor: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
