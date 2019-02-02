@@ -3,29 +3,17 @@
 [ExecuteInEditMode]
 public class Background : MonoBehaviour
 {
-    public float distance;
     public Material material;
 
     // Update is called once per frame
     void Update()
     {
         if (_camera == null)
-            _camera = GetComponent<Camera>();
-        if (_location == null)
-            _location = FindObjectOfType<Location>();
+            _camera = FindObjectOfType<SceneryCamera>();
 
-        // camera movement
-        var so = _location.scene_orientation;
-        var sp = _location.scene_position;
-
-        var cr = _camera.transform.rotation;
-        var C = Matrix4x4.Rotate(so * cr);
-
-        C.SetRow(3, new Vector4(sp.x, sp.y, sp.z, 1));
-
+        var C = _camera.camera_transform;
         material.SetMatrix("_CameraTransform", C);
     }
 
-    private Camera _camera;
-    private Location _location;
+    private SceneryCamera _camera;
 }

@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
   - component: {fileID: 534669908}
+  - component: {fileID: 534669911}
   - component: {fileID: 534669909}
   - component: {fileID: 534669907}
   - component: {fileID: 534669910}
@@ -417,10 +418,14 @@ MonoBehaviour:
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
   m_ShowToolkit: 1
-  m_ShowCustomSorter: 0
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
+  m_BeforeStackBundles:
+  - assemblyQualifiedName: Flat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: LensFlare, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_AfterStackBundles:
   - assemblyQualifiedName: Grayscale, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -436,9 +441,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853a6fc6187559b4787d1e892e4eb183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0.3
-  speed: 2
-  min: 6
+  sensitivity: 1
+  speed: 0.3
+  min: 6.5
   max: 20
 --- !u!114 &534669909
 MonoBehaviour:
@@ -452,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d5a06f91b5ad14abb574cff897be20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1.06
   material: {fileID: 2100000, guid: 15d3536bb71c1f142b38dfed70ef0c0b, type: 2}
 --- !u!114 &534669910
 MonoBehaviour:
@@ -471,6 +475,35 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!114 &534669911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ceafafb0b2ebd4ba95f00c04f219df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera_transform:
+    e00: -0.7638081
+    e01: -0.6137098
+    e02: -0.19989383
+    e03: 0
+    e10: -0.63980937
+    e11: 0.7607464
+    e12: 0.109127864
+    e13: 0
+    e20: 0.085095674
+    e21: 0.21124668
+    e22: -0.9737215
+    e23: 0
+    e30: -0.68135476
+    e31: 0
+    e32: -0.8120071
+    e33: 1
 --- !u!1 &850643209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,14 +1238,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075570524}
-  m_LocalRotation: {x: -0.34213048, y: 0.45212507, z: 0.19317417, w: 0.80075806}
+  m_LocalRotation: {x: 0.028284658, y: 0.9676785, z: -0.12653829, w: 0.21630174}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534669905}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -46.27, y: 58.9, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.9, y: 154.8, z: 0}
 --- !u!114 &2075570526
 MonoBehaviour:
   m_ObjectHideFlags: 0

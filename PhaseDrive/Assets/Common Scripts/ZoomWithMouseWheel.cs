@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ZoomWithMouseWheel : MonoBehaviour
 {
-    public float sensitivity = 0.5f;
-    public float speed = 1.0f;
+    public float sensitivity = 1.0f;
+    public float speed = 0.3f;
     public float min = 700;
     public float max = 3000;
 
@@ -13,9 +13,9 @@ public class ZoomWithMouseWheel : MonoBehaviour
         var cp = transform.localPosition; // current position
         var cz = cp.z; // current zoom
 
-        if (target_distance.TryGetValue(out var td))
+        if (target_zoom.TryGetValue(out var td))
         {
-            var nz = Mathf.Lerp(td, cz, Mathf.Pow(0.5f, sensitivity)); // new zoom
+            var nz = Mathf.Lerp(td, cz, Mathf.Pow(0.5f, speed)); // new zoom
             transform.localPosition = new Vector3(cp.x, cp.y, nz);
         }
 
@@ -26,11 +26,11 @@ public class ZoomWithMouseWheel : MonoBehaviour
         var min = -this.max;
         var max = -this.min;
 
-        var tz = target_distance ?? cz;
-        tz += d * speed;
-        target_distance = Mathf.Clamp(tz, min, max);
+        var tz = target_zoom ?? cz; // target zoom
+        tz += d * sensitivity;
+        target_zoom = Mathf.Clamp(tz, min, max);
     }
 
-    private float? target_distance;
+    private float? target_zoom;
 
 }

@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Skybox/Background"
+﻿Shader "Skybox/Background"
 {
 	Properties
 	{
@@ -9,14 +7,15 @@ Shader "Skybox/Background"
 	{
 		Pass
 		{
-			CGPROGRAM
+			HLSLPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
 
 			#include "UnityCG.cginc"
-			#include "Assets/Shader Tools/Common.cginc"
-			#include "BackgroundFragment.cginc"
-
+			#include "Assets/Shader Tools/Common.hlsl"
+			#include "BackgroundCommon.hlsl"
+		
+			sampler2D _CameraDepthTexture;
 			m4 _CameraTransform;
 	        v1 _LocalTime;
 
@@ -53,6 +52,10 @@ Shader "Skybox/Background"
 				v1 ssd; // degree of the sunset
 				sun_visibility(ro, C, ft, rs.x / rs.y, sov, ssd, fsp);
 
+				v1 oc = occlusion(fsp, _OcclusionRadius, rs.x / rs.y, _CameraDepthTexture);
+				sov -= oc;
+				sov = sat0(sov);
+
 				o.rops = v4(ro, ps);
 				o.sun  = v4(fsp, sov, ssd);
 
@@ -82,7 +85,7 @@ Shader "Skybox/Background"
 
 				return background(fc, sp, ro, rd, ps, t, sov, ssd, fsp);
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }

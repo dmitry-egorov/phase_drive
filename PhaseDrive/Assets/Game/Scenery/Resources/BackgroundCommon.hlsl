@@ -1,4 +1,4 @@
-﻿#include "Assets/Shader Tools/Common.cginc"
+﻿#include "Assets/Shader Tools/Common.hlsl"
 
 //----PARAMETERS----
 //#define FARSHOT
@@ -173,7 +173,7 @@ static const v1 _CameraFovTan = tan(_CameraFov);
 //----TIME----
 v1 time()
 {
-	return iTime;
+	return iTime.x;
 }
 
 //----STARS----
@@ -778,6 +778,79 @@ v4 sun
 }
 
 //----LENS FLARE----
+
+static const v1 _OcclusionRadius = 0.0335;//TODO: match the sun's radius
+static const uint DEPTH_SAMPLE_COUNT = 32;
+static v2 samples[DEPTH_SAMPLE_COUNT] = {
+	v2(0.658752441406,-0.0977704077959),
+	v2(0.505380451679,-0.862896621227),
+	v2(-0.678673446178,0.120453640819),
+	v2(-0.429447203875,-0.501827657223),
+	v2(-0.239791020751,0.577527523041),
+	v2(-0.666824519634,-0.745214760303),
+	v2(0.147858589888,-0.304675519466),
+	v2(0.0334240831435,0.263438135386),
+	v2(-0.164710089564,-0.17076793313),
+	v2(0.289210408926,0.0226817727089),
+	v2(0.109557107091,-0.993980526924),
+	v2(-0.999996423721,-0.00266989553347),
+	v2(0.804284930229,0.594243884087),
+	v2(0.240315377712,-0.653567194939),
+	v2(-0.313934922218,0.94944447279),
+	v2(0.386928111315,0.480902403593),
+	v2(0.979771316051,-0.200120285153),
+	v2(0.505873680115,-0.407543361187),
+	v2(0.617167234421,0.247610524297),
+	v2(-0.672138273716,0.740425646305),
+	v2(-0.305256098509,-0.952270269394),
+	v2(0.493631094694,0.869671344757),
+	v2(0.0982239097357,0.995164275169),
+	v2(0.976404249668,0.21595069766),
+	v2(-0.308868765831,0.150203511119),
+	v2(-0.586166858673,-0.19671548903),
+	v2(-0.912466347218,-0.409151613712),
+	v2(0.0959918648005,0.666364192963),
+	v2(0.813257217407,-0.581904232502),
+	v2(-0.914829492569,0.403840065002),
+	v2(-0.542099535465,0.432246923447),
+	v2(-0.106764614582,-0.618209302425)
+};
+
+v1 occlusion
+(
+	v2 fsp, // flare screen position
+	v1 radius,
+	v1 ratio,
+#ifdef UNITY_POSTFX_STDLIB
+	Texture2D dt, //depth texture
+	SamplerState sdt // depth texture sampler state
+#else
+	sampler2D dt
+#endif
+)
+{
+	float contrib = 0.0f;
+	float sample_Contrib = 1.0 / DEPTH_SAMPLE_COUNT;
+	for (uint i = 0; i < DEPTH_SAMPLE_COUNT; i++)
+	{
+		v2 pos = fsp + (samples[i] * radius);
+		pos.x /= ratio;
+		pos = pos * 0.5 + 0.5;
+
+		if (pos.x >= 0 && pos.x <= 1 && pos.y >= 0 && pos.y <= 1)
+		{
+#ifdef UNITY_POSTFX_STDLIB
+			float sampledDepth = SAMPLE_TEXTURE2D_LOD(dt, sdt, pos, 0).r;
+#else
+			float sampledDepth = tex2Dlod(dt, v4(pos, 0.0, 0.0)).r;
+#endif
+			if (sampledDepth > 0.)
+				contrib += sample_Contrib;
+		}
+	}
+	return contrib;
+}
+
 v1 fins
 (
 	in v2 sp // screen point
@@ -878,16 +951,16 @@ v3 lens_flare
 v3 sun_lens_flare
 (
 	in v2 sp // screen point
+	, in v2 fsp // flare screen position
 	, in v1 ov  // overall visibility
 	, in v1 ssd // degree of the sunset
-	, in v2 fsp // flare screen position
 )
 {
 	v3   mc = v3(0.856, 0.919, 1.000); // main color
 	v3   rc = v3(0.900, 0.508, 0.342); // red shift
 	v3   bc = v3(0.135, 0.305, 0.940); // blue shift
 	v1   fn = 10.;
-	v1  mfi = 1.3;   // main fins intensity
+	v1  mfi = 1.0;   // main fins intensity
 	v1  mff = 4.3;   // main fins falloff
 	v1  mfl = 0.4;   // main length
 	v1  mfr = 0.65;  // main range
@@ -965,14 +1038,14 @@ v3 transparent_objects
 	, in v3 rd // ray direction
 	, in v1 ps // pixel size
 	, in v2 sp // screen point
+	, in v2 fsp // flare screen position
 	, in v1 sov // sun overall visibility
 	, in v1 ssd // degree of the sunset
-	, in v2 fsp // flare screen position
 )
 {
 	v3 c = v3_0;
 	c += atmosphere(ro, rd, ps);
-	//c += sun_lens_flare(sp, sov, ssd, fsp);
+	//c += sun_lens_flare(sp, fsp, sov, ssd);
 	return c;
 }
 
@@ -994,7 +1067,7 @@ v4 background
 	c += opaque_objects(ro, rd, t, ps, sov);
 #endif
 #ifndef SKIP_TRANSPARENT
-	c += transparent_objects(ro, rd, ps, sp, sov, ssd, fsp);
+	c += transparent_objects(ro, rd, ps, sp, fsp, sov, ssd);
 #endif
 
 	//c = pow(c, (1. / 2.2)*v3_1);
