@@ -13,6 +13,8 @@ ModelImporter:
     100014: Ark Hatch Blueprint
     100016: Circle Paint Blueprint
     100018: Line Paint Blueprint
+    100020: Stripe Paint Blueprint
+    100022: Hull.002
     400000: Armor Bottom
     400002: Armor Top
     400004: Hull
@@ -23,6 +25,8 @@ ModelImporter:
     400014: Ark Hatch Blueprint
     400016: Circle Paint Blueprint
     400018: Line Paint Blueprint
+    400020: Stripe Paint Blueprint
+    400022: Hull.002
     2100000: No Name
     2100002: Adamantine Armor
     2100004: Hull
@@ -38,6 +42,9 @@ ModelImporter:
     2300012: Ark Hatch Blueprint
     2300014: Circle Paint Blueprint
     2300016: Line Paint Blueprint
+    2300018: Stripe Paint Blueprint
+    2300020: //RootNode
+    2300022: Hull.002
     3300000: Armor Bottom
     3300002: Armor Top
     3300004: Hull
@@ -47,6 +54,9 @@ ModelImporter:
     3300012: Ark Hatch Blueprint
     3300014: Circle Paint Blueprint
     3300016: Line Paint Blueprint
+    3300018: Stripe Paint Blueprint
+    3300020: //RootNode
+    3300022: Hull.002
     4300000: Hull
     4300002: Armor Top
     4300004: Armor Bottom
@@ -56,6 +66,8 @@ ModelImporter:
     4300012: Ark Hatch Blueprint
     4300014: Circle Paint Blueprint
     4300016: Line Paint Blueprint
+    4300018: Stripe Paint Blueprint
+    4300020: Hull.002
     2186277476908879412: ImportLogs
   externalObjects:
   - first:
