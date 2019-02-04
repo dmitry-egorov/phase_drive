@@ -18,7 +18,6 @@ MonoBehaviour:
   - {fileID: 114519395962289286}
   - {fileID: 114799697096099442}
   - {fileID: 114424383945284046}
-  - {fileID: 114868845418014054}
   - {fileID: 114054783791971708}
 --- !u!114 &114003840720065710
 MonoBehaviour:
@@ -208,23 +207,4 @@ MonoBehaviour:
     value: 0.04
   fastMode:
     overrideState: 0
-    value: 0
---- !u!114 &114868845418014054
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e7298774c1d1a4987a7c2b8f74bc2e, type: 3}
-  m_Name: Flat
-  m_EditorClassIdentifier: 
-  active: 0
-  enabled:
-    overrideState: 1
-    value: 1
-  blend:
-    overrideState: 1
     value: 0
