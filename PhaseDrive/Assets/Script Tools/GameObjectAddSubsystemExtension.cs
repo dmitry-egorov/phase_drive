@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.ScriptTools
+namespace Assets.Script_Tools
 {
     public static class GameObjectAddSubsystemExtension
     {

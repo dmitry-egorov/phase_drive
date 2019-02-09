@@ -1,8 +1,10 @@
-﻿using Assets.ScriptTools;
+﻿using Assets.Script_Tools;
 using UnityEngine;
 
 public class ShipAI : MonoBehaviour
 {
+    public GameObject Ship;
+
     void Update()
     {
         InitializeOnce();
@@ -16,13 +18,11 @@ public class ShipAI : MonoBehaviour
         if (_initialized)
             return;
 
-        var subsystemsRoot = gameObject.AddChild("AI Subsystems");
+        _weapons = gameObject.AddChild<ShipWeaponsSubsystem>("Weapons");
+        _navigation = gameObject.AddChild<ShipNavigationSubsystem>("Navigation");
 
-        _weapons = subsystemsRoot.AddChild<ShipWeaponsSubsystem>("Weapons");
-        _navigation = subsystemsRoot.AddChild<ShipNavigationSubsystem>("Navigation");
-
-        _weapons.SetShip(gameObject);
-        _navigation.SetShip(gameObject);
+        _weapons.SetShip(Ship);
+        _navigation.SetShip(Ship);
 
         _initialized = true;
     }

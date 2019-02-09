@@ -75,7 +75,8 @@
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\WeaponAI.cs" />
     <Compile Include="Assets\Game\Mechanics\Destructable.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\Location.cs" />
-    <Compile Include="Assets\Game\Mechanics\Globals\Time.cs" />
+    <Compile Include="Assets\Game\Mechanics\Globals\TimeChanger.cs" />
+    <Compile Include="Assets\Game\Mechanics\Globals\TimeKeeper.cs" />
     <Compile Include="Assets\Game\Mechanics\Mount.cs" />
     <Compile Include="Assets\Game\Mechanics\Mountable.cs" />
     <Compile Include="Assets\Game\Planets\Core\Textured\TexturedProceduralPlanet.cs" />
@@ -87,6 +88,16 @@
     <Compile Include="Assets\Game\Scenery\LensFlare.cs" />
     <Compile Include="Assets\Game\Scenery\SceneryCamera.cs" />
     <Compile Include="Assets\Game\Scenery\SunLight.cs" />
+    <Compile Include="Assets\Game\UI\ActivatedOnSelection.cs" />
+    <Compile Include="Assets\Game\UI\ActiveMarkedChildrenWhenSelected.cs" />
+    <Compile Include="Assets\Game\UI\ClickRoot.cs" />
+    <Compile Include="Assets\Game\UI\CommandsManager.cs" />
+    <Compile Include="Assets\Game\UI\DeactivatedOnSelection.cs" />
+    <Compile Include="Assets\Game\UI\Follow.cs" />
+    <Compile Include="Assets\Game\UI\LookAt.cs" />
+    <Compile Include="Assets\Game\UI\LookAtCamera.cs" />
+    <Compile Include="Assets\Game\UI\Raycaster.cs" />
+    <Compile Include="Assets\Game\UI\Selectable.cs" />
     <Compile Include="Assets\Script Tools\ArrayTryGetFirstItemExtension.cs" />
     <Compile Include="Assets\Script Tools\GameObjectAddSubsystemExtension.cs" />
     <Compile Include="Assets\Script Tools\NullableTryGetValueExtension.cs" />
@@ -94,6 +105,7 @@
     <None Include="Assets\Game\Planets\Core\Textured\Runtime.shader" />
     <None Include="Assets\Game\Scenery\Resources\BackgroundCommon.hlsl" />
     <None Include="Assets\Game\Scenery\Resources\Grayscale.shader" />
+    <None Include="Assets\Game\UI\Circle.shader" />
     <None Include="Assets\Game\Planets\Core\Textured\Generator.shader" />
     <None Include="Assets\Game\Scenery\Resources\LensFlare.shader" />
     <None Include="Assets\Shader Tools\SimplexNoise.cginc" />

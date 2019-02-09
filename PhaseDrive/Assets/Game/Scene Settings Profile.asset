@@ -12,12 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
   m_Name: Scene Settings Profile
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 114038251765810590}
-  - {fileID: 114804046902445520}
-  - {fileID: 114998524468440854}
-  - {fileID: 114079840763231326}
-  - {fileID: 114674092738414958}
+  components: []
 --- !u!114 &114038251765810590
 MonoBehaviour:
   m_ObjectHideFlags: 3

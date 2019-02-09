@@ -5,8 +5,7 @@ public class Background : MonoBehaviour
 {
     public Material material;
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (_camera == null)
             _camera = FindObjectOfType<SceneryCamera>();

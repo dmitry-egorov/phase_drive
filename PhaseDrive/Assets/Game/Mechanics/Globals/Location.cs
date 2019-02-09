@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Time = Assets.Game.Mechanics.Globals.Time;
 
 [ExecuteInEditMode]
 public class Location : MonoBehaviour
@@ -15,7 +14,7 @@ public class Location : MonoBehaviour
     public void Update()
     {
         if (_time == null)
-            _time = FindObjectOfType<Time>();
+            _time = FindObjectOfType<TimeKeeper>();
 
         // camera movement
         var t = _time.currentTime;
@@ -36,5 +35,5 @@ public class Location : MonoBehaviour
         sunlight_direction = sd;
     }
 
-    private Time _time;
+    private TimeKeeper _time;
 }

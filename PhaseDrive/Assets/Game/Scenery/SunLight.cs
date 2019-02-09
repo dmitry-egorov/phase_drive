@@ -3,7 +3,7 @@
 [ExecuteInEditMode]
 public class SunLight: MonoBehaviour
 {
-    public void Update()
+    void LateUpdate()
     {
         if (_location == null)
             _location = FindObjectOfType<Location>();

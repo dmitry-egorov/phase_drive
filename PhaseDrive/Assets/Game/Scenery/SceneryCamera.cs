@@ -5,7 +5,7 @@ public class SceneryCamera : MonoBehaviour
 {
     public Matrix4x4 camera_transform;
 
-    public void Update()
+    public void LateUpdate()
     {
         if (_camera == null)
             _camera = GetComponent<Camera>();
