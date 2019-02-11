@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Script_Tools;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using Object = UnityEngine.Object;
@@ -13,8 +14,7 @@ public sealed class LensFlareRenderer : PostProcessEffectRenderer<LensFlare>
 {
     public override void Render(PostProcessRenderContext context)
     {
-        if (_camera == null)
-            _camera = Object.FindObjectOfType<SceneryCamera>();
+        if (_camera == null) _camera = Find.RequiredSingleton<SceneryCamera>();
 
         var C = _camera.camera_transform;
         var sheet = context.propertySheets.Get(Shader.Find("Hidden/Custom/LensFlare"));

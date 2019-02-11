@@ -5,6 +5,9 @@
 	}
 	SubShader
 	{
+        LOD 100
+        ZWrite Off
+
 		Pass
 		{
 			HLSLPROGRAM

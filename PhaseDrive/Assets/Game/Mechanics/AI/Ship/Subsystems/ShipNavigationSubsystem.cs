@@ -1,7 +1,7 @@
-﻿using Assets.ScriptTools;
+﻿using Assets.Script_Tools;
 using UnityEngine;
 
-public class ShipNavigationSubsystem: MonoBehaviour
+public class ShipNavigationSubsystem : MonoBehaviour
 {
     public GameObject PossibleShip;
     public Quaternion? PossibleTargetRotation;

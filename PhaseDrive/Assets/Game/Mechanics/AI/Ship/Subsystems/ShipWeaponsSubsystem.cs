@@ -1,4 +1,4 @@
-﻿using Assets.ScriptTools;
+﻿using Assets.Script_Tools;
 using UnityEngine;
 
 public class ShipWeaponsSubsystem : MonoBehaviour

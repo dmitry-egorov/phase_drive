@@ -1,4 +1,4 @@
-﻿namespace Assets.ScriptTools
+﻿namespace Assets.Script_Tools
 {
     public static class ArrayTryGetFirstItemExtension
     {

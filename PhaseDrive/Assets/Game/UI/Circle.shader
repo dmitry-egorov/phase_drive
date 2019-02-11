@@ -56,26 +56,24 @@
                 v2 cuv = 2.0 * i.uv - 1.0; // centered uv
                 v1 uv2 = vsqr(cuv);
                 v1 r2 = sqr(_Radius);
+                //v1 fw = min(ddx(i.uv.x), ddy(i.uv.y));
                 v1 fw = fwidth(i.uv);
-                v1 w = _WidthPx * fw;
+                
                 v1 bw = _BackWidthPx * fw;
+                v1 a = smoothstep(uv2 - bw, uv2, r2)
+                    - smoothstep(uv2, uv2 + bw, r2); // alpha
 
+                if (a <= 0.0)
+                    discard;
 
-
+                v1 w = _WidthPx * fw;
                 v1 cm = smoothstep(uv2 - w, uv2, r2)
                       - smoothstep(uv2, uv2 + w, r2); //color mix
-
-                v1 a = smoothstep(uv2 - bw, uv2, r2)
-                     - smoothstep(uv2, uv2 + bw, r2); // alpha
-
-                //a = 1.0;
 
                 v4 c = mix(_BackColor, _Color, cm);
                 c.w = a;
 
                 return c;
-
-                //return fixed4(i.uv.r, i.uv.g, 0.0, 1.0);
             }
             ENDCG
         }
