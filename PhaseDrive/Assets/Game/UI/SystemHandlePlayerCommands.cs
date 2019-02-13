@@ -85,7 +85,8 @@ public class SystemHandlePlayerCommands : MonoBehaviour
         (
             // right clicked a hostile entity
                mouseButton == MouseButton.RightMouse
-            && _currentSelection.TryGetComponent<Controlable>(out var controlable)
+            && _currentSelection.TryGetValue(out var selection)
+            && selection.TryGetComponent<Controlable>(out var controlable)
             && controlable.CanAttack
             && clickedEntity.TryGetComponent(out ownable)
             && _localPlayer.IsHostileTowards(ownable.Owner)

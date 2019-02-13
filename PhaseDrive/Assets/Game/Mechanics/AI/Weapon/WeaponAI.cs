@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class WeaponAI : MonoBehaviour
 {
-    public bool IsStationary; //TODO: Can't target subsystems
-
     public GameObject GetPossibleFirstTarget() =>
         _initialized 
         ? _targetsQueue.GetPossibleFirstTarget() 

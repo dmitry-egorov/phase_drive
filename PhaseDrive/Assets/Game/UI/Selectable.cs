@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
+using UnityEngine;
 
-public class Selectable : MonoBehaviour
+public class Selectable : DataComponent
 {
     public bool IsSeclected;
 }

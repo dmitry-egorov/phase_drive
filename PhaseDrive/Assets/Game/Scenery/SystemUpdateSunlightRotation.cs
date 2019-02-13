@@ -1,17 +1,9 @@
-﻿using Assets.Script_Tools;
-using UnityEngine;
+﻿using Assets.ECS;
 
-[ExecuteInEditMode]
-public class SystemUpdateSunlightRotation : MonoBehaviour
+public class SystemUpdateSunlightRotation : SingletonSystem<OrbitalLocation, SunLight>
 {
-    void Update()
+    protected override void Handle(OrbitalLocation orbitalLocation, SunLight sunLight)
     {
-        if (_orbitalLocation == null) _orbitalLocation = Find.RequiredSingleton<OrbitalLocation>();
-        if (_sunLight == null) _sunLight = Find.RequiredSingleton<SunLight>();
-
-        _sunLight.transform.localRotation = _orbitalLocation.SunlightDirection;
+        sunLight.transform.localRotation = orbitalLocation.SunlightDirection;
     }
-
-    private OrbitalLocation _orbitalLocation;
-    private SunLight _sunLight;
 }

@@ -1,17 +1,13 @@
-﻿using Assets.Script_Tools;
+﻿using Assets.ECS;
 using UnityEngine;
 
-public class SystemStopTimeWithPlayerInput : MonoBehaviour
+public class SystemStopTimeWithPlayerInput : SingletonSystem<Timer>
 {
-    public void Update()
+    protected override void Handle(Timer timer)
     {
-        if (_timer == null) _timer = Find.RequiredSingleton<Timer>();
-
         if (Input.GetKeyUp(KeyCode.P))
         {
-            _timer.Stopped = !_timer.Stopped;
+            timer.Stopped = !timer.Stopped;
         }
     }
-
-    private Timer _timer;
 }

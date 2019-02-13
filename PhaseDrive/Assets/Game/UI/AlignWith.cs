@@ -10,8 +10,8 @@ public class AlignWith : MonoBehaviour
     {
         if (!_initialized)
         {
-            _position = gameObject.GetOrAddHiddenComponent<SamePositionAs>();
-            _rotation = gameObject.GetOrAddHiddenComponent<SameRotationAs>();
+            _position = gameObject.GetOrAddTempComponent<HasSamePositionAs>();
+            _rotation = gameObject.GetOrAddTempComponent<HasSameRotationAs>();
 
             _initialized = true;
         }
@@ -20,7 +20,7 @@ public class AlignWith : MonoBehaviour
         _rotation.Target = Target;
     }
 
-    private SamePositionAs _position;
-    private SameRotationAs _rotation;
+    private HasSamePositionAs _position;
+    private HasSameRotationAs _rotation;
     private bool _initialized;
 }

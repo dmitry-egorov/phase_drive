@@ -60,13 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Common Scripts\LokingAt.cs" />
-    <Compile Include="Assets\Common Scripts\RotatedWithMouseLook.cs" />
-    <Compile Include="Assets\Common Scripts\SyncWorldPosition.cs" />
-    <Compile Include="Assets\Common Scripts\SyncWorldRotation.cs" />
-    <Compile Include="Assets\Common Scripts\SystemRotateMarkedWithMouseLook.cs" />
-    <Compile Include="Assets\Common Scripts\SystemZoomMarkedWithMouseWheel.cs" />
-    <Compile Include="Assets\Common Scripts\ZoomedWithMouseWheel.cs" />
+    <Compile Include="Assets\Common Scripts\LooksAt.cs" />
+    <Compile Include="Assets\Common Scripts\RotatesWithMouseLook.cs" />
+    <Compile Include="Assets\Common Scripts\SystemMakeLookAt.cs" />
+    <Compile Include="Assets\Common Scripts\SystemRotateWithMouseLook.cs" />
+    <Compile Include="Assets\Common Scripts\SystemZoomWithMouseWheel.cs" />
+    <Compile Include="Assets\Common Scripts\ZoomsWithMouseWheel.cs" />
+    <Compile Include="Assets\ECS\ECS.cs" />
+    <Compile Include="Assets\ECS\SystemsManager.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\ShipAI.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipNavigationSubsystem.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Ship\Subsystems\ShipWeaponsSubsystem.cs" />
@@ -99,20 +100,21 @@
     <Compile Include="Assets\Game\Scenery\SceneryCamera.cs" />
     <Compile Include="Assets\Game\Scenery\SunLight.cs" />
     <Compile Include="Assets\Game\Scenery\SystemUpdateSunlightRotation.cs" />
-    <Compile Include="Assets\Game\UI\ActivateMarkedChildrenWhenSelected.cs" />
     <Compile Include="Assets\Game\UI\ActiveWhenSelected.cs" />
     <Compile Include="Assets\Game\UI\AlignWith.cs" />
     <Compile Include="Assets\Game\UI\Clickable.cs" />
+    <Compile Include="Assets\Game\UI\HasSamePositionAs.cs" />
+    <Compile Include="Assets\Game\UI\HasSameRotationAs.cs" />
     <Compile Include="Assets\Game\UI\InactiveWhenSelected.cs" />
     <Compile Include="Assets\Game\UI\LocalPlayer.cs" />
-    <Compile Include="Assets\Game\UI\LookAt.cs" />
-    <Compile Include="Assets\Game\UI\LookAtDispositionCamera.cs" />
+    <Compile Include="Assets\Game\UI\LooksAtDispositionCamera.cs" />
     <Compile Include="Assets\Game\UI\Main.cs" />
-    <Compile Include="Assets\Game\UI\Raycaster.cs" />
-    <Compile Include="Assets\Game\UI\SamePositionAs.cs" />
-    <Compile Include="Assets\Game\UI\SameRotationAs.cs" />
     <Compile Include="Assets\Game\UI\Selectable.cs" />
+    <Compile Include="Assets\Game\UI\SystemActivateMarkedChildrenWhenSelected.cs" />
     <Compile Include="Assets\Game\UI\SystemHandlePlayerCommands.cs" />
+    <Compile Include="Assets\Game\UI\SystemMakeLookAtDispositionCamera.cs" />
+    <Compile Include="Assets\Game\UI\SystemSyncPosition.cs" />
+    <Compile Include="Assets\Game\UI\SystemSyncRotation.cs" />
     <Compile Include="Assets\Game\UI\Viewport.cs" />
     <Compile Include="Assets\Script Tools\ArrayTryGetFirstItemExtension.cs" />
     <Compile Include="Assets\Script Tools\ComponentTryGetComponentExtension.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="Assets\Script Tools\GameObjectTryGetComponentExtension.cs" />
     <Compile Include="Assets\Script Tools\NullableTryGetValueExtension.cs" />
     <Compile Include="Assets\Script Tools\ReferenceTryGetValueExtension.cs" />
+    <Compile Include="Assets\Script Tools\ShorterVectors.cs" />
     <Compile Include="Assets\Script Tools\VectorReplaceExtensions.cs" />
     <None Include="Assets\Game\UI\SecondaryView.shader" />
     <None Include="Assets\Game\Planets\Core\Textured\Runtime.shader" />

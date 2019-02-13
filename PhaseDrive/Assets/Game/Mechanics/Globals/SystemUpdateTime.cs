@@ -1,17 +1,13 @@
-﻿using Assets.Script_Tools;
+﻿using Assets.ECS;
 using UnityEngine;
 
-public class SystemUpdateTime: MonoBehaviour
+public class SystemUpdateTime: SingletonSystem<Timer>
 {
-    public void Update()
+    protected override void Handle(Timer timer)
     {
-        if (_timer == null) _timer = Find.RequiredSingleton<Timer>();
-
-        if (!_timer.Stopped)
+        if (!timer.Stopped)
         {
-            _timer.CurrentTime += Time.deltaTime;
+            timer.CurrentTime += Time.deltaTime;
         }
     }
-
-    private Timer _timer;
 }
