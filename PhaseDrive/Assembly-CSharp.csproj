@@ -90,6 +90,7 @@
     <Compile Include="Assets\Game\Mechanics\Mount.cs" />
     <Compile Include="Assets\Game\Mechanics\Mountable.cs" />
     <Compile Include="Assets\Game\Mechanics\Ownable.cs" />
+    <Compile Include="Assets\Game\Mechanics\Weapon.cs" />
     <Compile Include="Assets\Game\Planets\Core\Textured\TexturedProceduralPlanet.cs" />
     <Compile Include="Assets\Game\Planets\Core\Vertex\Noise.cs" />
     <Compile Include="Assets\Game\Planets\Core\Vertex\VertexProceduralPlanet.cs" />

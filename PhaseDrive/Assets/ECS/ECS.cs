@@ -11,19 +11,18 @@ namespace Assets.ECS
     {
         public void OnEnable()
         {
-            Init();
+            if (_systemsManager == null)
+                _systemsManager = Find.RequiredSingleton<SystemsManager>();
+
             _systemsManager.Add(this);
         }
 
         public void OnDisable()
         {
-            Init();
-            _systemsManager.Remove(this);
-        }
-
-        private void Init()
-        {
-            if (_systemsManager == null) _systemsManager = Find.RequiredSingleton<SystemsManager>();
+            if (_systemsManager != null)
+            {
+                _systemsManager.Remove(this);
+            }
         }
 
         private SystemsManager _systemsManager;
