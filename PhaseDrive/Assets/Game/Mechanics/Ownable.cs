@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
+using UnityEngine;
 
-public class Ownable : MonoBehaviour
+public class Ownable : DataComponent
 {
     public GameObject Owner;
 }

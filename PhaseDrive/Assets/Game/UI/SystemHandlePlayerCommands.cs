@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Assets.ECS;
-using Assets.Script_Tools;
+﻿using Assets.Script_Tools;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
@@ -88,14 +86,14 @@ public class SystemHandlePlayerCommands : MonoBehaviour
             // right clicked a hostile entity
                mouseButton == MouseButton.RightMouse
             && _currentSelection.TryGetValue(out var selection)
-            && selection.TryGetComponent<Controlable>(out var controlable)
-            && controlable.CanAttack
+            && selection.TryGetComponent<Attacks>(out var canAttack)
             && clickedEntity.TryGetComponent(out ownable)
             && _localPlayer.IsHostileTowards(ownable.Owner)
         )
             // attack the clicked entity with currently selected units
         {
-            IssueAttack(controlable, clickedEntity);
+            canAttack.Targets.Add(clickedEntity);
+            //IssueAttack(controlable, clickedEntity);
             return;
         }
 
@@ -108,27 +106,6 @@ public class SystemHandlePlayerCommands : MonoBehaviour
 
         lastSelectable.IsSeclected = false;
         _currentSelection = null;
-    }
-
-    private static void IssueAttack(Controlable controlable, GameObject target)
-    {
-        var go = controlable.gameObject;
-
-        // get or populate weapons cache
-        var wc = go.GetOrAddTempComponent<WeaponsCache>(); // weapons cache
-        if (!wc.Weapons.TryGetValue(out var weapons)) weapons = wc.Weapons = go.GetComponentsInChildren<Weapon>();
-
-        for (var i = 0; i < weapons.Length; i++)
-        {
-            var w = weapons[i];
-            w.TargetsQueue.Clear();
-            w.TargetsQueue.Add(target);
-        }
-    }
-
-    private class WeaponsCache: MonoBehaviour
-    {
-        public Weapon[] Weapons;
     }
 
     private Camera _camera;

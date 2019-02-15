@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Mount : MonoBehaviour
 {
-    public bool RequiresShipAlignment;
+    [FormerlySerializedAs("RequiresShipAlignment")]public bool ExternalAlignment;
 
     void OnDrawGizmos()
     {

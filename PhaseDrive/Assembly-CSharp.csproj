@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Common Scripts\ChildrenCache.cs" />
     <Compile Include="Assets\Common Scripts\LooksAt.cs" />
     <Compile Include="Assets\Common Scripts\RotatesWithMouseLook.cs" />
     <Compile Include="Assets\Common Scripts\SystemMakeLookAt.cs" />
@@ -75,22 +76,34 @@
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\Subsystems\WeaponTarget.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\Subsystems\WeaponTargetsQueueSubsystem.cs" />
     <Compile Include="Assets\Game\Mechanics\AI\Weapon\WeaponAI.cs" />
+    <Compile Include="Assets\Game\Mechanics\Attacks.cs" />
     <Compile Include="Assets\Game\Mechanics\Commander.cs" />
-    <Compile Include="Assets\Game\Mechanics\Controlable.cs" />
+    <Compile Include="Assets\Game\Mechanics\Cooling.cs" />
     <Compile Include="Assets\Game\Mechanics\Destructable.cs" />
     <Compile Include="Assets\Game\Mechanics\Diplomatic.cs" />
+    <Compile Include="Assets\Game\Mechanics\FiresProjectiles.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\OrbitalLocation.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\SystemChangeTimeWithPlayerInput.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\SystemStopTimeWithPlayerInput.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\SystemUpdateOrbitalLocation.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\SystemUpdateTime.cs" />
     <Compile Include="Assets\Game\Mechanics\Globals\Timer.cs" />
+    <Compile Include="Assets\Game\Mechanics\Igniting.cs" />
     <Compile Include="Assets\Game\Mechanics\IsHostileTowardsExtension.cs" />
     <Compile Include="Assets\Game\Mechanics\Location.cs" />
+    <Compile Include="Assets\Game\Mechanics\Massive.cs" />
     <Compile Include="Assets\Game\Mechanics\Mount.cs" />
     <Compile Include="Assets\Game\Mechanics\Mountable.cs" />
+    <Compile Include="Assets\Game\Mechanics\MountsCache.cs" />
+    <Compile Include="Assets\Game\Mechanics\MountTools.cs" />
+    <Compile Include="Assets\Game\Mechanics\Moves.cs" />
     <Compile Include="Assets\Game\Mechanics\Ownable.cs" />
-    <Compile Include="Assets\Game\Mechanics\Weapon.cs" />
+    <Compile Include="Assets\Game\Mechanics\PropagatesAttackTargetsToMountsChildren.cs" />
+    <Compile Include="Assets\Game\Mechanics\RotatesTowardsMountsChildrenAttackTarget.cs" />
+    <Compile Include="Assets\Game\Mechanics\SystemFireProjectiles.cs" />
+    <Compile Include="Assets\Game\Mechanics\SystemMove.cs" />
+    <Compile Include="Assets\Game\Mechanics\SystemPropagateAttackTargetsToMountsChildren.cs" />
+    <Compile Include="Assets\Game\Mechanics\SystemSetRotationTargetFromMountsChildrenAttackTarget.cs" />
     <Compile Include="Assets\Game\Planets\Core\Textured\TexturedProceduralPlanet.cs" />
     <Compile Include="Assets\Game\Planets\Core\Vertex\Noise.cs" />
     <Compile Include="Assets\Game\Planets\Core\Vertex\VertexProceduralPlanet.cs" />
@@ -110,10 +123,12 @@
     <Compile Include="Assets\Game\UI\LocalPlayer.cs" />
     <Compile Include="Assets\Game\UI\LooksAtDispositionCamera.cs" />
     <Compile Include="Assets\Game\UI\Main.cs" />
+    <Compile Include="Assets\Game\UI\Rotates.cs" />
     <Compile Include="Assets\Game\UI\Selectable.cs" />
     <Compile Include="Assets\Game\UI\SystemActivateMarkedChildrenWhenSelected.cs" />
     <Compile Include="Assets\Game\UI\SystemHandlePlayerCommands.cs" />
     <Compile Include="Assets\Game\UI\SystemMakeLookAtDispositionCamera.cs" />
+    <Compile Include="Assets\Game\UI\SystemRotateTowardTarget.cs" />
     <Compile Include="Assets\Game\UI\SystemSyncPosition.cs" />
     <Compile Include="Assets\Game\UI\SystemSyncRotation.cs" />
     <Compile Include="Assets\Game\UI\Viewport.cs" />
@@ -121,6 +136,7 @@
     <Compile Include="Assets\Script Tools\ComponentTryGetComponentExtension.cs" />
     <Compile Include="Assets\Script Tools\Find.cs" />
     <Compile Include="Assets\Script Tools\GameObjectAddSubsystemExtension.cs" />
+    <Compile Include="Assets\Script Tools\GameObjectFindChildrenWithExtension.cs" />
     <Compile Include="Assets\Script Tools\GameObjectGetOrAddHiddenComponentExtension.cs" />
     <Compile Include="Assets\Script Tools\GameObjectTryGetComponentExtension.cs" />
     <Compile Include="Assets\Script Tools\NullableTryGetValueExtension.cs" />

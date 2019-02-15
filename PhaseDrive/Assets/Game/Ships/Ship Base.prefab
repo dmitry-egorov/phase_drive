@@ -216,7 +216,10 @@ GameObject:
   - component: {fileID: 5431473699090524628}
   - component: {fileID: 6140682857882070686}
   - component: {fileID: 3949110382003470366}
+  - component: {fileID: 3769430322705834811}
   - component: {fileID: 2713997431886625007}
+  - component: {fileID: 8540477119469410566}
+  - component: {fileID: 3371135093788096429}
   m_Layer: 0
   m_Name: Ship Base
   m_TagString: Untagged
@@ -268,6 +271,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
+--- !u!114 &3769430322705834811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022134588216425895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef12178750b65764f9b3f5c38e4a2545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  TargetRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &2713997431886625007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,8 +297,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e3c9033b8ae2b4ebb3a33ee35b409b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanAttack: 1
-  Commands: []
+  Targets: []
+--- !u!114 &8540477119469410566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022134588216425895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568cdd59f8d84154ab4a72e0290f6993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3371135093788096429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022134588216425895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b7b433bab45d54cb265ea74a0ce9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5699510031207592697
 GameObject:
   m_ObjectHideFlags: 0

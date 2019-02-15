@@ -243,6 +243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Selection Marker
       objectReference: {fileID: 0}
+    - target: {fileID: 3769430322705834811, guid: be4710a65849f614dadd7008779ef03a,
+        type: 3}
+      propertyPath: Speed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4710a65849f614dadd7008779ef03a, type: 3}
 --- !u!4 &4593927551353605816 stripped

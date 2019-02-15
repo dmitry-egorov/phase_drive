@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4213947163687298255}
   - component: {fileID: 2565347495485535832}
-  - component: {fileID: 3401127704599179783}
+  - component: {fileID: 3686011969959432630}
   m_Layer: 0
   m_Name: Weapon Base
   m_TagString: Untagged
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f4368ddbd725441b1663a970d4b432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3401127704599179783
+--- !u!114 &3686011969959432630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4213947163687298250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74a3301cd4192364196392b25c767f13, type: 3}
+  m_Script: {fileID: 11500000, guid: 53e3c9033b8ae2b4ebb3a33ee35b409b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetsQueue: []
+  Targets: []

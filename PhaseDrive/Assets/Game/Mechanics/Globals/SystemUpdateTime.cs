@@ -7,7 +7,14 @@ public class SystemUpdateTime: SingletonSystem<Timer>
     {
         if (!timer.Stopped)
         {
-            timer.CurrentTime += Time.deltaTime;
+            var dt = Time.deltaTime;
+
+            timer.DeltaTime = dt;
+            timer.CurrentTime += dt;
+        }
+        else
+        {
+            timer.DeltaTime = 0.0f;
         }
     }
 }

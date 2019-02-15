@@ -2,13 +2,13 @@
 
 public class SystemSyncPosition : MultiSystem<HasSamePositionAs>
 {
-    protected override void Handle(HasSamePositionAs component)
+    protected override void Handle(HasSamePositionAs c)
     {
-        var t = component.Target;
+        var t = c.Target;
 
         if (t == null)
             return;
 
-        transform.position = t.position;
+        c.transform.position = t.position;
     }
 }

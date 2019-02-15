@@ -2,13 +2,13 @@
 
 public class SystemSyncRotation : MultiSystem<HasSameRotationAs>
 {
-    protected override void Handle(HasSameRotationAs marked)
+    protected override void Handle(HasSameRotationAs c)
     {
-        var t = marked.Target;
+        var t = c.Target;
 
         if (t == null)
             return;
 
-        marked.transform.rotation = t.rotation;
+        c.transform.rotation = t.rotation;
     }
 }

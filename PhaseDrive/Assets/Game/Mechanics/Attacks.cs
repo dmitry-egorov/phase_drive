@@ -2,7 +2,7 @@
 using Assets.ECS;
 using UnityEngine;
 
-public class Weapon: DataComponent
+public class Attacks: DataComponent
 {
-    public List<GameObject> TargetsQueue;
+    public List<GameObject> Targets;
 }
