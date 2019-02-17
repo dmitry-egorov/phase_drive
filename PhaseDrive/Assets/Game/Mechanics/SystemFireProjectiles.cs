@@ -2,7 +2,7 @@
 using Assets.Script_Tools;
 using UnityEngine;
 
-public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
+public class SystemFireProjectiles : PerObjectSystem<FiresProjectiles>
 {
     public Transform ProjectilesParent;
 
@@ -10,10 +10,10 @@ public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
     {
         var go = fp.gameObject;
         var a = go.GetComponent<Attacks>();
-        if (a == null || a.Targets.Count == 0)
+        if (a == null || a.TargetsQueue.Count == 0)
             return;
 
-        var t = a.Targets[0].transform.position; // current target position
+        var t = a.TargetsQueue[0].transform.position; // current target position
         var from = fp.From.position;
         var to = fp.To.position;
 

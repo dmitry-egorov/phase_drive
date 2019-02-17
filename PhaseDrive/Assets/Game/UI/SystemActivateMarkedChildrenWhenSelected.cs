@@ -2,9 +2,9 @@
 using Assets.Script_Tools;
 using UnityEngine;
 
-public class SystemActivateMarkedChildrenWhenSelected : MultiSystem<Selectable>
+public class SystemActivateMarkedChildrenWhenSelected : PerObjectSystem<CanBeSelected>
 {
-    protected override void Handle(Selectable selectable)
+    protected override void Handle(CanBeSelected selectable)
     {
         var cache = selectable.gameObject.GetOrAddTempComponent<Cache>();
         cache.Init();

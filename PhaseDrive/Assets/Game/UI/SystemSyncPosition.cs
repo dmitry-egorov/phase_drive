@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class SystemSyncPosition : MultiSystem<HasSamePositionAs>
+public class SystemSyncPosition : PerObjectSystem<HasSamePositionAs>
 {
     protected override void Handle(HasSamePositionAs c)
     {

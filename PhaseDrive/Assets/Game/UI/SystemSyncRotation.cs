@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class SystemSyncRotation : MultiSystem<HasSameRotationAs>
+public class SystemSyncRotation : PerObjectSystem<HasSameRotationAs>
 {
     protected override void Handle(HasSameRotationAs c)
     {

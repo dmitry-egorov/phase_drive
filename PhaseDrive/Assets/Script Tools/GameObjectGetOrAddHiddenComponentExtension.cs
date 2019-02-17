@@ -10,7 +10,7 @@ namespace Assets.Script_Tools
             if (c == null)
             {
                 c = obj.AddComponent<T>();
-                c.hideFlags = HideFlags.DontSave;
+                c.hideFlags = HideFlags.HideAndDontSave;
             }
 
             return c;

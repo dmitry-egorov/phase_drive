@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class SystemRotateTowardTarget : MultiSystem<Rotates>
+public class SystemRotateTowardTarget : PerObjectSystem<Rotates>
 {
     protected override void Handle(Rotates r)
     {

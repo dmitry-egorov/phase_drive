@@ -2,9 +2,10 @@
 using Assets.Script_Tools;
 using UnityEngine;
 
-public class SystemSetRotationTargetFromMountsChildrenAttackTarget : MultiSystem<RotatesTowardsMountsChildrenAttackTarget>
+//note: takes the first weapon that has a target and is mounted in a slot with external alignment
+public class SystemGetRotationTargetFromMountedWeaponsAttackTarget : PerObjectSystem<RotatesTowardsWeaponsAttackTarget>
 {
-    protected override void Handle(RotatesTowardsMountsChildrenAttackTarget component)
+    protected override void Handle(RotatesTowardsWeaponsAttackTarget component)
     {
         var go = component.gameObject;
 
@@ -17,12 +18,12 @@ public class SystemSetRotationTargetFromMountsChildrenAttackTarget : MultiSystem
             if 
             (
                 m.ExternalAlignment
-                && m.transform.childCount != 0 
-                && m.transform.GetChild(0).TryGetComponent<Attacks>(out var a) 
-                && a.Targets.Count != 0
+                && m.transform.childCount != 0 // has mounted weapon
+                && m.transform.GetChild(0).TryGetComponent<Attacks>(out var a)
+                && a.TargetsQueue.Count != 0 // has a target
             )
             {
-                target = a.Targets[0];
+                target = a.TargetsQueue[0];
                 break;
             }
         }

@@ -7,7 +7,7 @@ public class SystemHandlePlayerCommands : MonoBehaviour
 {
     public void Update()
     {
-        if (_camera == null) _camera = Find.RequiredSingleton<Camera, Main>();
+        if (_camera == null) _camera = Find.RequiredSingleton<Camera, MainCamera>();
         if (_localPlayer == null) _localPlayer = Find.RequiredSingleton<LocalPlayer>().gameObject;
 
         var lc = Input.GetMouseButtonUp((int)MouseButton.LeftMouse);
@@ -68,8 +68,8 @@ public class SystemHandlePlayerCommands : MonoBehaviour
         (
             // left clicked a selectable entity, commanded by the local player
             mouseButton == MouseButton.LeftMouse
-            && clickedEntity.TryGetComponent<Selectable>(out var selectable)
-            && clickedEntity.TryGetComponent<Ownable>(out var ownable)
+            && clickedEntity.TryGetComponent<CanBeSelected>(out var selectable)
+            && clickedEntity.TryGetComponent<OwnedBy>(out var ownable)
             && ownable.Owner == _localPlayer
         )
             // select the clicked entity
@@ -92,7 +92,7 @@ public class SystemHandlePlayerCommands : MonoBehaviour
         )
             // attack the clicked entity with currently selected units
         {
-            canAttack.Targets.Add(clickedEntity);
+            canAttack.TargetsQueue.Add(clickedEntity);
             //IssueAttack(controlable, clickedEntity);
             return;
         }
@@ -111,5 +111,5 @@ public class SystemHandlePlayerCommands : MonoBehaviour
     private Camera _camera;
     private GameObject _localPlayer;
 
-    [CanBeNull] private Selectable _currentSelection;
+    [CanBeNull] private CanBeSelected _currentSelection;
 }

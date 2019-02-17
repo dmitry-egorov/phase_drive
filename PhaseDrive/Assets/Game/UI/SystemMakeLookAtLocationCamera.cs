@@ -2,9 +2,9 @@
 using Assets.Script_Tools;
 using UnityEngine;
 
-public class SystemMakeLookAtDispositionCamera : MultiSystem<LooksAtDispositionCamera>
+public class SystemMakeLookAtLocationCamera : PerObjectSystem<LooksAtLocationCamera>
 {
-    protected override void Handle(LooksAtDispositionCamera component)
+    protected override void Handle(LooksAtLocationCamera component)
     {
         var cache = component.gameObject.GetOrAddTempComponent<Cache>();
         cache.Init();

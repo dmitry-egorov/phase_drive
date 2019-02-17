@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Assets.ECS;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Attacks: DataComponent
 {
-    public List<GameObject> Targets;
+    [FormerlySerializedAs("Targets")]
+    public List<GameObject> TargetsQueue;
 }

@@ -88,6 +88,21 @@ namespace Assets.ECS
         void Remove(DataComponent dataComponent);
     }
 
+    public abstract class PerObjectSystem<TRootComponent> : MultiSystem<TRootComponent>
+        where TRootComponent : DataComponent
+    {
+        protected override void Run(List<TRootComponent> components)
+        {
+            for (var i = 0; i < components.Count; i++)
+            {
+                Handle(components[i]);
+            }
+        }
+
+        protected abstract void Handle(TRootComponent component);
+    }
+
+
     [ExecuteInEditMode]
     public abstract class MultiSystem<TRootComponent>: MonoBehaviour, IMultiSystem
         where TRootComponent : DataComponent
@@ -98,15 +113,7 @@ namespace Assets.ECS
             Run(_components);
         }
 
-        protected virtual void Run(List<TRootComponent> components)
-        {
-            for (var i = 0; i < components.Count; i++)
-            {
-                Handle(components[i]);
-            }
-        }
-
-        protected virtual void Handle(TRootComponent component) { }
+        protected abstract void Run(List<TRootComponent> components);
 
         public Type GetRootComponentType() => typeof(TRootComponent);
 
