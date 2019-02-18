@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
 
-public class Timer : MonoBehaviour
+public class Timer : DataComponent
 {
     public float DeltaTime;
     public float CurrentTime;

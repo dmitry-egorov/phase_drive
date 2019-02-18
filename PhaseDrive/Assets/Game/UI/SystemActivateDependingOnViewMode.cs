@@ -1,12 +1,11 @@
-﻿using Assets.Script_Tools;
+﻿using Assets.ECS;
 using UnityEngine;
 using static ViewMode.TheMode;
 
-public class SystemEnableDependingOnViewMode : MonoBehaviour
+public class SystemActivateDependingOnViewMode : SingletonSystem<ViewMode>
 {
-    public void Update()
+    protected override void Handle(ViewMode viewMode)
     {
-        if (viewMode == null) viewMode = Find.RequiredSingleton<ViewMode>();
         if (markedObjects == null) markedObjects = Resources.FindObjectsOfTypeAll<ActiveDependingOnViewMode>();
 
         for (var i = 0; i < markedObjects.Length; i++)
@@ -21,6 +20,5 @@ public class SystemEnableDependingOnViewMode : MonoBehaviour
         }
     }
 
-    private ViewMode viewMode;
     private ActiveDependingOnViewMode[] markedObjects;
 }

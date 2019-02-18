@@ -5,7 +5,7 @@ public class SystemUpdateTime: SingletonSystem<Timer>
 {
     protected override void Handle(Timer timer)
     {
-        if (!timer.Stopped)
+        if (!timer.Stopped && Application.isPlaying)
         {
             var dt = Time.deltaTime;
 

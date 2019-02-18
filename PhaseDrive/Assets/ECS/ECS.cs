@@ -28,6 +28,7 @@ namespace Assets.ECS
         private SystemsManager _systemsManager;
     }
 
+    [ExecuteInEditMode]
     public abstract class SingletonSystem<TComponent> : MonoBehaviour where TComponent : Object
     {
         public void Update()
@@ -42,6 +43,7 @@ namespace Assets.ECS
         private TComponent component;
     }
 
+    [ExecuteInEditMode]
     public abstract class SingletonSystem<TComponent1, TComponent2> : MonoBehaviour 
         where TComponent1 : Object
         where TComponent2 : Object
@@ -60,6 +62,7 @@ namespace Assets.ECS
         private TComponent2 component2;
     }
 
+    [ExecuteInEditMode]
     public abstract class SingletonSystem<TComponent1, TComponent2, TComponent3> : MonoBehaviour 
         where TComponent1 : Object
         where TComponent2 : Object

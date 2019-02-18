@@ -33,7 +33,7 @@ public class SystemActivateMarkedChildrenWhenSelected : PerObjectSystem<CanBeSel
         }
     }
 
-    private class Cache: MonoBehaviour
+    private class Cache: DataComponent
     {
         public ActiveWhenSelected[] Actives;
         public InactiveWhenSelected[] Inactives;

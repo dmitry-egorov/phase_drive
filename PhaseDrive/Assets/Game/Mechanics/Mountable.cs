@@ -1,5 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
 
-public class Mountable: MonoBehaviour
+public class Mountable: DataComponent
 {
 }

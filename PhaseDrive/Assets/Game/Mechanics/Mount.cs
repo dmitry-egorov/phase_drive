@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
+using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Mount : MonoBehaviour
+public class Mount : DataComponent
 {
     [FormerlySerializedAs("RequiresShipAlignment")]public bool ExternalAlignment;
 

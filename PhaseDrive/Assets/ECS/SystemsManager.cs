@@ -3,6 +3,7 @@ using System.Linq;
 using Assets.ECS;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class SystemsManager : MonoBehaviour
 {
     public void Add(DataComponent dataComponent)

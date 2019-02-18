@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
+using UnityEngine;
 
-public class Location : MonoBehaviour
+public class Location : DataComponent
 {
     public Camera Camera;
 }

@@ -1,13 +1,14 @@
-﻿using Assets.Script_Tools;
+﻿using Assets.ECS;
+using Assets.Script_Tools;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
-public class SystemHandlePlayerCommands : MonoBehaviour
+public class SystemHandlePlayerCommands : SingletonSystem<MainCamera>
 {
-    public void Update()
+    protected override void Handle(MainCamera c)
     {
-        if (_camera == null) _camera = Find.RequiredSingleton<Camera, MainCamera>();
+        if (_camera == null) _camera = c.GetComponent<Camera>();
         if (_localPlayer == null) _localPlayer = Find.RequiredSingleton<LocalPlayer>().gameObject;
 
         var lc = Input.GetMouseButtonUp((int)MouseButton.LeftMouse);

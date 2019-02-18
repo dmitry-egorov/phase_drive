@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
+using UnityEngine;
 using UnityEngine.Serialization;
 
-public class OrbitalLocation : MonoBehaviour
+public class OrbitalLocation : DataComponent
 {
     [FormerlySerializedAs("distance")] public float Distance;
     [FormerlySerializedAs("speed")]    public float Speed;

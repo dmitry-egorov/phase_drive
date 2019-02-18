@@ -12,7 +12,7 @@ public class SystemMakeLookAtLocationCamera : PerObjectSystem<LooksAtLocationCam
         cache.LooksAt.Target = cache.Location?.Camera?.transform;
     }
 
-    private class Cache: MonoBehaviour
+    private class Cache: DataComponent
     {
         public Location Location;
         public LooksAt LooksAt;

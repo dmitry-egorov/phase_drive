@@ -1,5 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
 
-public class ActiveWhenSelected : MonoBehaviour
+public class ActiveWhenSelected : DataComponent
 {
 }

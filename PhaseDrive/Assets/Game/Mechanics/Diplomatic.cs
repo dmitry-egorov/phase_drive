@@ -1,7 +1,8 @@
 ﻿using System;
+using Assets.ECS;
 using UnityEngine;
 
-public class Diplomatic : MonoBehaviour
+public class Diplomatic : DataComponent
 {
     public Relationship[] Relationships;
 

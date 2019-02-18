@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
 
-public class ViewMode : MonoBehaviour
+public class ViewMode : DataComponent
 {
     public TheMode Mode;
 

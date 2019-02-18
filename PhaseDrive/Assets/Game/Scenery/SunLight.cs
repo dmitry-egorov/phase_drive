@@ -1,5 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
 
-public class SunLight : MonoBehaviour
+public class SunLight : DataComponent
 {
 }

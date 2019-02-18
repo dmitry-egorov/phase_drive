@@ -1,5 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
 
-public class MainCamera: MonoBehaviour
+public class MainCamera: DataComponent
 {
 }

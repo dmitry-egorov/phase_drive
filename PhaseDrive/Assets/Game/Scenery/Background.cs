@@ -1,8 +1,8 @@
-﻿using Assets.Script_Tools;
+﻿using Assets.ECS;
+using Assets.Script_Tools;
 using UnityEngine;
 
-[ExecuteInEditMode]
-public class Background : MonoBehaviour
+public class Background : DataComponent
 {
     public Material material;
 

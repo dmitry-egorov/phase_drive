@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Common Scripts\ChildrenCache.cs" />
     <Compile Include="Assets\Common Scripts\LooksAt.cs" />
     <Compile Include="Assets\Common Scripts\RotatesWithMouseLook.cs" />
     <Compile Include="Assets\Common Scripts\SystemMakeLookAt.cs" />
@@ -70,7 +69,6 @@
     <Compile Include="Assets\ECS\ECS.cs" />
     <Compile Include="Assets\ECS\SystemsManager.cs" />
     <Compile Include="Assets\Game\Mechanics\Attacks.cs" />
-    <Compile Include="Assets\Game\Mechanics\Commander.cs" />
     <Compile Include="Assets\Game\Mechanics\Cooling.cs" />
     <Compile Include="Assets\Game\Mechanics\Destructable.cs" />
     <Compile Include="Assets\Game\Mechanics\Diplomatic.cs" />
@@ -121,8 +119,8 @@
     <Compile Include="Assets\Game\UI\LooksAtLocationCamera.cs" />
     <Compile Include="Assets\Game\UI\MainCamera.cs" />
     <Compile Include="Assets\Game\UI\Rotates.cs" />
+    <Compile Include="Assets\Game\UI\SystemActivateDependingOnViewMode.cs" />
     <Compile Include="Assets\Game\UI\SystemActivateMarkedChildrenWhenSelected.cs" />
-    <Compile Include="Assets\Game\UI\SystemEnableDependingOnViewMode.cs" />
     <Compile Include="Assets\Game\UI\SystemHandlePlayerCommands.cs" />
     <Compile Include="Assets\Game\UI\SystemMakeLookAtLocationCamera.cs" />
     <Compile Include="Assets\Game\UI\SystemRotateTowardTarget.cs" />

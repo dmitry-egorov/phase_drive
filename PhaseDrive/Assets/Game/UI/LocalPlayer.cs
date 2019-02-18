@@ -1,5 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.ECS;
 
-public class LocalPlayer: MonoBehaviour
+public class LocalPlayer: DataComponent
 {
 }
