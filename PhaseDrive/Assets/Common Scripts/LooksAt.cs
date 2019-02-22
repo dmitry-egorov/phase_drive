@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class LooksAt : DataComponent
+public class LooksAt : OnOffDataComponent
 {
     public Transform Target;
 }

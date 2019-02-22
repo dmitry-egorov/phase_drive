@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class FiresProjectiles: DataComponent
+public class FiresProjectiles: OnOffDataComponent
 {
     public Transform From;
     public Transform To;

@@ -6,35 +6,59 @@ using Object = UnityEngine.Object;
 
 namespace Assets.ECS
 {
-    [ExecuteInEditMode]
     public abstract class DataComponent : MonoBehaviour
+    {
+    }
+
+    /// <summary>
+    /// A component that's not affected by the enable flag
+    /// Used primarily for activating/deactivating its game object
+    /// </summary>
+    [ExecuteAlways]
+    public abstract class AlwaysOnDataComponent : DataComponent
+    {
+        protected AlwaysOnDataComponent()
+        {
+            // the instance will be null during initial load of the scene
+            var systemsManager = SystemsManager.Instance;
+            if (systemsManager != null) systemsManager.Add(this);
+        }
+
+        public void OnDestroy()
+        {
+            var systemsManager = SystemsManager.Instance;
+            if (systemsManager != null) systemsManager.Remove(this);
+        }
+    }
+
+    [ExecuteAlways]
+    public abstract class OnOffDataComponent : DataComponent
     {
         public void OnEnable()
         {
-            if (_systemsManager == null)
-                _systemsManager = Find.RequiredSingleton<SystemsManager>();
-
-            _systemsManager.Add(this);
+            if (systemsManager == null) systemsManager = Find.RequiredSingleton<SystemsManager>();
+            systemsManager.Add(this);
         }
 
         public void OnDisable()
         {
-            if (_systemsManager != null)
-            {
-                _systemsManager.Remove(this);
-            }
+            if (systemsManager != null) systemsManager.Remove(this);
         }
 
-        private SystemsManager _systemsManager;
+        private SystemsManager systemsManager;
     }
 
-    [ExecuteInEditMode]
-    public abstract class SingletonSystem<TComponent> : MonoBehaviour where TComponent : Object
+    public abstract class System : MonoBehaviour
     {
-        public void Update()
+        public abstract void Execute();
+    }
+
+    [ExecuteAlways]
+    public abstract class SingletonSystem<TComponent> : System where TComponent : Object
+    {
+        public override void Execute()
         {
             if (component == null) component = Find.RequiredSingleton<TComponent>();
-
             Handle(component);
         }
 
@@ -43,12 +67,12 @@ namespace Assets.ECS
         private TComponent component;
     }
 
-    [ExecuteInEditMode]
-    public abstract class SingletonSystem<TComponent1, TComponent2> : MonoBehaviour 
+    [ExecuteAlways]
+    public abstract class SingletonSystem<TComponent1, TComponent2> : System
         where TComponent1 : Object
         where TComponent2 : Object
     {
-        public void Update()
+        public override void Execute()
         {
             if (component1 == null) component1 = Find.RequiredSingleton<TComponent1>();
             if (component2 == null) component2 = Find.RequiredSingleton<TComponent2>();
@@ -62,13 +86,13 @@ namespace Assets.ECS
         private TComponent2 component2;
     }
 
-    [ExecuteInEditMode]
-    public abstract class SingletonSystem<TComponent1, TComponent2, TComponent3> : MonoBehaviour 
+    [ExecuteAlways]
+    public abstract class SingletonSystem<TComponent1, TComponent2, TComponent3> : System
         where TComponent1 : Object
         where TComponent2 : Object
         where TComponent3 : Object
     {
-        public void Update()
+        public override void Execute()
         {
             if (component1 == null) component1 = Find.RequiredSingleton<TComponent1>();
             if (component2 == null) component2 = Find.RequiredSingleton<TComponent2>();
@@ -84,62 +108,102 @@ namespace Assets.ECS
         private TComponent3 component3;
     }
 
-    public interface IMultiSystem
+    public abstract class MultiSystem : System
     {
-        Type GetRootComponentType();
-        void Add(DataComponent dataComponent);
-        void Remove(DataComponent dataComponent);
+        // for systems manager
+        public abstract Type GetRootComponentType();
+        public abstract void Add(DataComponent dataComponent);
+        public abstract void Remove(DataComponent dataComponent);
+
+        // for the editor
+        public abstract IEnumerable<MonoBehaviour> GetComponents();
+        public abstract int GetComponentsCount();
     }
 
-    public abstract class PerObjectSystem<TRootComponent> : MultiSystem<TRootComponent>
+    [ExecuteAlways]
+    public abstract class MultiSystem<TRootComponent> : MultiSystem
         where TRootComponent : DataComponent
     {
-        protected override void Run(List<TRootComponent> components)
+        public override void Execute()
         {
-            for (var i = 0; i < components.Count; i++)
+            Init();
+
+            // Note: "always on" components OnDestroy is not called if they weren't active in their lifetime
+            // so we must delete them manually while iterating through components
+            var i = 0;
+            while (i < components.Count)
             {
-                Handle(components[i]);
+                var c = components[i];
+                if
+                (
+                    c == null
+#if UNITY_EDITOR
+                    // unity calls constructors of prefab components (after the initialization of the scene),
+                    // so we clean them up here
+                    || c.gameObject.scene.rootCount == 0
+#endif
+                )
+                {
+                    RemoveAt(i);
+                }
+                else
+                {
+                    Handle(c);
+                    i++;
+                }
             }
         }
 
+        protected virtual void Initialize()
+        {
+        }
+
         protected abstract void Handle(TRootComponent component);
-    }
 
+        public override Type GetRootComponentType() => typeof(TRootComponent);
 
-    [ExecuteInEditMode]
-    public abstract class MultiSystem<TRootComponent>: MonoBehaviour, IMultiSystem
-        where TRootComponent : DataComponent
-    {
-        public void Update()
+        public override void Add(DataComponent dataComponent)
         {
             Init();
-            Run(_components);
+            components.Add((TRootComponent) dataComponent);
         }
 
-        protected abstract void Run(List<TRootComponent> components);
-
-        public Type GetRootComponentType() => typeof(TRootComponent);
-
-        public void Add(DataComponent dataComponent)
+        public override void Remove(DataComponent dataComponent)
         {
             Init();
-            _components.Add((TRootComponent) dataComponent);
+            var i = components.IndexOf((TRootComponent) dataComponent);
+            RemoveAt(i);
         }
 
-        public void Remove(DataComponent dataComponent)
+        public override IEnumerable<MonoBehaviour> GetComponents() => components;
+        public override int GetComponentsCount() => components.Count;
+
+        private void RemoveAt(int i)
         {
-            Init();
-            var i = _components.IndexOf((TRootComponent)dataComponent);
-            var li = _components.Count - 1; // last index
-            _components[i] = _components[li];
-            _components.RemoveAt(li);
+            var li = components.Count - 1; // last index
+            components[i] = components[li];
+            components.RemoveAt(li);
         }
 
         private void Init()
         {
-            if (_components == null) _components = new List<TRootComponent>();
+            if (!initialized)
+            {
+                if (components == null)
+                {
+                    components = new List<TRootComponent>();
+                }
+                else
+                {
+                    components.Clear();
+                }
+
+                Initialize();
+                initialized = true;
+            }
         }
 
-        private List<TRootComponent> _components;
+        [NonSerialized] private List<TRootComponent> components;
+        [NonSerialized] private bool initialized;
     }
 }

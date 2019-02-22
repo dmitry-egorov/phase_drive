@@ -2,7 +2,7 @@
 using Assets.ECS;
 using UnityEngine;
 
-public class Diplomatic : DataComponent
+public class Diplomatic : OnOffDataComponent
 {
     public Relationship[] Relationships;
 

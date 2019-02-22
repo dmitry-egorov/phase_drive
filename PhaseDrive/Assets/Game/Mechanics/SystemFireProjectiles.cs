@@ -2,14 +2,19 @@
 using Assets.Script_Tools;
 using UnityEngine;
 
-public class SystemFireProjectiles : PerObjectSystem<FiresProjectiles>
+public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
 {
     public Transform ProjectilesParent;
+
+    protected override void Initialize()
+    {
+        timer = Find.RequiredSingleton<Timer>();
+    }
 
     protected override void Handle(FiresProjectiles fp)
     {
         var go = fp.gameObject;
-        var a = go.GetComponent<Attacks>();
+        var a = go.GetComponent<CanAttack>();
         if (a == null || a.TargetsQueue.Count == 0)
             return;
 
@@ -26,7 +31,7 @@ public class SystemFireProjectiles : PerObjectSystem<FiresProjectiles>
         if (ca < 1f - m) // angle is too wide
             return;
 
-        var time = GetTime();
+        var time = timer.CurrentTime;
 
         if (go.TryGetComponent<Igniting>(out var i))
         {
@@ -74,12 +79,6 @@ public class SystemFireProjectiles : PerObjectSystem<FiresProjectiles>
             var ni = go.AddComponent<Igniting>(); // new igniting
             ni.StartTime = time;
         }
-    }
-
-    private float GetTime()
-    {
-        if (timer == null) timer = Find.RequiredSingleton<Timer>();
-        return timer.CurrentTime;
     }
 
     private Timer timer;

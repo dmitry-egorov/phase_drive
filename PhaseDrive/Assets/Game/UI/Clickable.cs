@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Clickable : DataComponent
+public class Clickable : OnOffDataComponent
 {
     public GameObject Root;
 }

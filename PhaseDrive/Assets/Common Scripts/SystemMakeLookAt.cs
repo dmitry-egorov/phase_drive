@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class SystemMakeLookAt: PerObjectSystem<LooksAt>
+public class SystemMakeLookAt: MultiSystem<LooksAt>
 {
     protected override void Handle(LooksAt looksAt)
     {

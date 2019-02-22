@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class Moves: DataComponent
+public class Moves: OnOffDataComponent
 {
     public Vector3 Velocity;
 }

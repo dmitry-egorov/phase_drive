@@ -1,5 +1,5 @@
 ﻿using Assets.ECS;
 
-public class LocalPlayer: DataComponent
+public class LocalPlayer: OnOffDataComponent
 {
 }

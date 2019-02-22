@@ -87,7 +87,7 @@ public class SystemHandlePlayerCommands : SingletonSystem<MainCamera>
             // right clicked a hostile entity
                mouseButton == MouseButton.RightMouse
             && _currentSelection.TryGetValue(out var selection)
-            && selection.TryGetComponent<Attacks>(out var canAttack)
+            && selection.TryGetComponent<CanAttack>(out var canAttack)
             && clickedEntity.TryGetComponent(out ownable)
             && _localPlayer.IsHostileTowards(ownable.Owner)
         )

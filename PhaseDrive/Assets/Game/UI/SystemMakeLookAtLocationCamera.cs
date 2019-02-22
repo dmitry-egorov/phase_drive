@@ -1,26 +1,13 @@
 ﻿using Assets.ECS;
 using Assets.Script_Tools;
-using UnityEngine;
 
-public class SystemMakeLookAtLocationCamera : PerObjectSystem<LooksAtLocationCamera>
+public class SystemMakeLookAtLocationCamera : MultiSystem<LooksAtLocationCamera>
 {
-    protected override void Handle(LooksAtLocationCamera component)
+    protected override void Handle(LooksAtLocationCamera l)
     {
-        var cache = component.gameObject.GetOrAddTempComponent<Cache>();
-        cache.Init();
+        var looksAt = l.gameObject.GetOrAddTempComponent<LooksAt>();
+        var location = l.gameObject.GetComponentInParent<Location>();
 
-        cache.LooksAt.Target = cache.Location?.Camera?.transform;
-    }
-
-    private class Cache: DataComponent
-    {
-        public Location Location;
-        public LooksAt LooksAt;
-
-        public void Init()
-        {
-            if (Location == null) Location = gameObject.GetComponentInParent<Location>();
-            if (LooksAt == null) LooksAt = gameObject.GetOrAddTempComponent<LooksAt>();
-        }
+        looksAt.Target = location?.Camera?.transform;
     }
 }

@@ -68,7 +68,7 @@
     <Compile Include="Assets\Common Scripts\ZoomsWithMouseWheel.cs" />
     <Compile Include="Assets\ECS\ECS.cs" />
     <Compile Include="Assets\ECS\SystemsManager.cs" />
-    <Compile Include="Assets\Game\Mechanics\Attacks.cs" />
+    <Compile Include="Assets\Game\Mechanics\CanAttack.cs" />
     <Compile Include="Assets\Game\Mechanics\Cooling.cs" />
     <Compile Include="Assets\Game\Mechanics\Destructable.cs" />
     <Compile Include="Assets\Game\Mechanics\Diplomatic.cs" />
@@ -109,6 +109,7 @@
     <Compile Include="Assets\Game\UI\ActiveDependingOnViewMode.cs" />
     <Compile Include="Assets\Game\UI\ActiveWhenSelected.cs" />
     <Compile Include="Assets\Game\UI\CanBeSelected.cs" />
+    <Compile Include="Assets\Game\UI\CanRotate.cs" />
     <Compile Include="Assets\Game\UI\ChangesTransformSyncWithViewMode.cs" />
     <Compile Include="Assets\Game\UI\Clickable.cs" />
     <Compile Include="Assets\Game\UI\HasSamePositionAs.cs" />
@@ -118,9 +119,9 @@
     <Compile Include="Assets\Game\UI\LocalPlayer.cs" />
     <Compile Include="Assets\Game\UI\LooksAtLocationCamera.cs" />
     <Compile Include="Assets\Game\UI\MainCamera.cs" />
-    <Compile Include="Assets\Game\UI\Rotates.cs" />
     <Compile Include="Assets\Game\UI\SystemActivateDependingOnViewMode.cs" />
-    <Compile Include="Assets\Game\UI\SystemActivateMarkedChildrenWhenSelected.cs" />
+    <Compile Include="Assets\Game\UI\SystemActivateWhenParentIsSelected.cs" />
+    <Compile Include="Assets\Game\UI\SystemDeactivateWhenParentIsSelected.cs" />
     <Compile Include="Assets\Game\UI\SystemHandlePlayerCommands.cs" />
     <Compile Include="Assets\Game\UI\SystemMakeLookAtLocationCamera.cs" />
     <Compile Include="Assets\Game\UI\SystemRotateTowardTarget.cs" />

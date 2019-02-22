@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Linq;
 using Assets.ECS;
+using JetBrains.Annotations;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class SystemsManager : MonoBehaviour
 {
+    [CanBeNull] public static SystemsManager Instance { get; private set; }
+
+    public void Update()
+    {
+        for (var i = 0; i < systems.Length; i++)
+        {
+            var s = systems[i];
+            s.Execute();
+        }
+    }
+
     public void Add(DataComponent dataComponent)
     {
         Init();
-
-        var t = dataComponent.GetType();
-
-        foreach (var system in systems[t])
-        {
-            system.Add(dataComponent);
-        }
+        AddUnsafe(dataComponent);
     }
 
     public void Remove(DataComponent dataComponent)
@@ -24,23 +30,56 @@ public class SystemsManager : MonoBehaviour
 
         var t = dataComponent.GetType();
 
-        foreach (var system in systems[t])
+        foreach (var system in multiSystemsLookup[t])
         {
             system.Remove(dataComponent);
         }
     }
 
-    private void Init()
+    private void AddUnsafe(DataComponent dataComponent)
     {
-        //Note: consider optimizing, maybe using a singleton MonoBehaviour instead of static or just saving some arbitrary reference to a scene object
-        if (systems == null)
-            systems =
-                Resources
-                    .FindObjectsOfTypeAll<MonoBehaviour>()
-                    .OfType<IMultiSystem>()
-                    .ToLookup(x => x.GetRootComponentType())
-                ;
+        var t = dataComponent.GetType();
+
+        foreach (var system in multiSystemsLookup[t])
+        {
+            system.Add(dataComponent);
+        }
     }
 
-    private ILookup<Type, IMultiSystem> systems;
+    private void Init()
+    {
+        if (Instance != null)
+            return;
+
+        Instance = this;
+
+        // find all systems
+        {
+            systems = GetComponents<Assets.ECS.System>();
+            multiSystemsLookup = 
+                GetComponents<MultiSystem>()
+                .ToLookup(x => x.GetRootComponentType())
+            ;
+        }
+
+        // find all "always on" components
+        // Note: "always on" components are added in their constructor,
+        // but the instance of the systems manager doesn't exist when deserializing
+        // so we must find all of them during initialization
+        {
+            var cs = Resources
+                .FindObjectsOfTypeAll<AlwaysOnDataComponent>()
+                .Where(x => x.gameObject.scene.rootCount != 0)
+                .ToArray()
+            ;
+
+            foreach (var c in cs)
+            {
+                AddUnsafe(c);
+            }
+        }
+    }
+
+    [NonSerialized] private ILookup<Type, MultiSystem> multiSystemsLookup;
+    [NonSerialized] private Assets.ECS.System[] systems;
 }

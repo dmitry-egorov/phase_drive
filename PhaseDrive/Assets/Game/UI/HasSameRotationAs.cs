@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class HasSameRotationAs : DataComponent
+public class HasSameRotationAs : OnOffDataComponent
 {
     public Transform Target;
 }

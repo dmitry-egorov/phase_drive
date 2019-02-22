@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class Viewport: DataComponent
+public class Viewport: OnOffDataComponent
 {
     public Camera Camera;
 }

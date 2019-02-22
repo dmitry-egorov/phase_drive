@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class OrbitalLocation : DataComponent
+public class OrbitalLocation : OnOffDataComponent
 {
     [FormerlySerializedAs("distance")] public float Distance;
     [FormerlySerializedAs("speed")]    public float Speed;

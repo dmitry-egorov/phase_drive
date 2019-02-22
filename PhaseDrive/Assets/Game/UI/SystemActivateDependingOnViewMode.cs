@@ -1,24 +1,23 @@
 ﻿using Assets.ECS;
-using UnityEngine;
+using Assets.Script_Tools;
 using static ViewMode.TheMode;
 
-public class SystemActivateDependingOnViewMode : SingletonSystem<ViewMode>
+public class SystemActivateDependingOnViewMode : MultiSystem<ActiveDependingOnViewMode>
 {
-    protected override void Handle(ViewMode viewMode)
+    protected override void Initialize()
     {
-        if (markedObjects == null) markedObjects = Resources.FindObjectsOfTypeAll<ActiveDependingOnViewMode>();
-
-        for (var i = 0; i < markedObjects.Length; i++)
-        {
-            var m = markedObjects[i];
-            var a = 
-                viewMode.Mode == Observational 
-                ? m.EnabledInObservationalMode 
-                : m.EnabledInTacticalMode
-            ;
-            m.gameObject.SetActive(a);
-        }
+        viewMode = Find.RequiredSingleton<ViewMode>();
     }
 
-    private ActiveDependingOnViewMode[] markedObjects;
+    protected override void Handle(ActiveDependingOnViewMode m)
+    {
+        var a =
+                viewMode.Mode == Observational
+                    ? m.EnabledInObservationalMode
+                    : m.EnabledInTacticalMode
+            ;
+        m.gameObject.SetActive(a);
+    }
+
+    private ViewMode viewMode;
 }

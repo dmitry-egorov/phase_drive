@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class OwnedBy : DataComponent
+public class OwnedBy : OnOffDataComponent
 {
     public GameObject Owner;
 }

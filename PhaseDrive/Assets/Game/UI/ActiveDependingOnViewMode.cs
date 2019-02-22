@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class ActiveDependingOnViewMode : DataComponent
+public class ActiveDependingOnViewMode : AlwaysOnDataComponent
 {
     public bool EnabledInObservationalMode;
     public bool EnabledInTacticalMode;

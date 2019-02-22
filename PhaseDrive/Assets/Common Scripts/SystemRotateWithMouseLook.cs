@@ -6,29 +6,26 @@ using static Assets.Script_Tools.ShorterVectors;
 
 public class SystemRotateWithMouseLook : MultiSystem<RotatesWithMouseLook>
 {
-    protected override void Run(List<RotatesWithMouseLook> components)
+    protected override void Handle(RotatesWithMouseLook rotates)
     {
         if (!Input.GetMouseButton((int) MouseButton.MiddleMouse)) return;
 
-        foreach (var rotated in components)
-        {
-            // x and y are inverted intentionally, since mouse movement in the X axis corresponds to rotation in Y and wise versa
-            var dm = v2(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+        // x and y are inverted intentionally, since mouse movement in the X axis corresponds to rotation in Y and wise versa
+        var dm = v2(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
 
-            var s = rotated.Speed;
-            var dt = Time.deltaTime;
-            var d = dm * dt * s;
-            var r = rotated.Rotation;
+        var s = rotates.Speed;
+        var dt = Time.deltaTime;
+        var d = dm * dt * s;
+        var r = rotates.Rotation;
 
-            var a = r + d; // angles
-            if (a.x > 89f) a.x = 89f;
-            if (a.x < -89f) a.x = -89f;
+        var a = r + d; // angles
+        if (a.x > 89f) a.x = 89f;
+        if (a.x < -89f) a.x = -89f;
 
-            var tr = rotated.transform;
-            var z = tr.eulerAngles.z;
-            tr.eulerAngles = v3(a, z);
+        var tr = rotates.transform;
+        var z = tr.eulerAngles.z;
+        tr.eulerAngles = v3(a, z);
 
-            rotated.Rotation = a;
-        }
+        rotates.Rotation = a;
     }
 }

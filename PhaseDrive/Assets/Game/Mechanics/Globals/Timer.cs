@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class Timer : DataComponent
+public class Timer : OnOffDataComponent
 {
     public float DeltaTime;
     public float CurrentTime;

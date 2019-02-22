@@ -1,5 +1,5 @@
 ﻿using Assets.ECS;
 
-public class ActiveWhenSelected : DataComponent
+public class ActiveWhenSelected : AlwaysOnDataComponent
 {
 }

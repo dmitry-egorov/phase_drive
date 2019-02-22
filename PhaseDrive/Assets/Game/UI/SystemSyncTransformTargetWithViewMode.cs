@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using Assets.Script_Tools;
 
-public class SystemSyncTransformTargetWithViewMode : PerObjectSystem<ChangesTransformSyncWithViewMode>
+public class SystemSyncTransformTargetWithViewMode : MultiSystem<ChangesTransformSyncWithViewMode>
 {
     protected override void Handle(ChangesTransformSyncWithViewMode c)
     {

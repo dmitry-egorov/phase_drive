@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class CanBeSelected : DataComponent
+public class CanBeSelected : OnOffDataComponent
 {
     public bool IsSeclected;
 }

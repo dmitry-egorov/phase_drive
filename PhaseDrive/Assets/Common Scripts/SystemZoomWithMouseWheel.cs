@@ -3,7 +3,7 @@ using Assets.Script_Tools;
 using UnityEngine;
 using static UnityEngine.Mathf;
 
-public class SystemZoomWithMouseWheel : PerObjectSystem<ZoomsWithMouseWheel>
+public class SystemZoomWithMouseWheel : MultiSystem<ZoomsWithMouseWheel>
 {
     protected override void Handle(ZoomsWithMouseWheel zoomed)
     {

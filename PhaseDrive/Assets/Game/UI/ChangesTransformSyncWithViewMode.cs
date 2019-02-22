@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class ChangesTransformSyncWithViewMode : DataComponent
+public class ChangesTransformSyncWithViewMode : OnOffDataComponent
 {
     public Transform ObservationalTransform;
     public Transform TacticalTransform;

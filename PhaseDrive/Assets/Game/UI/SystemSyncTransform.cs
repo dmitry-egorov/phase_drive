@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using Assets.Script_Tools;
 
-public class SystemSyncTransform : PerObjectSystem<HasSameTransformAs>
+public class SystemSyncTransform : MultiSystem<HasSameTransformAs>
 {
     protected override void Handle(HasSameTransformAs component)
     {

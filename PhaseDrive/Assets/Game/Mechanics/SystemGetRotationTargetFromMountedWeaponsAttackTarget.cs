@@ -3,7 +3,7 @@ using Assets.Script_Tools;
 using UnityEngine;
 
 //note: takes the first weapon that has a target and is mounted in a slot with external alignment
-public class SystemGetRotationTargetFromMountedWeaponsAttackTarget : PerObjectSystem<RotatesTowardsWeaponsAttackTarget>
+public class SystemGetRotationTargetFromMountedWeaponsAttackTarget : MultiSystem<RotatesTowardsWeaponsAttackTarget>
 {
     protected override void Handle(RotatesTowardsWeaponsAttackTarget component)
     {
@@ -19,7 +19,7 @@ public class SystemGetRotationTargetFromMountedWeaponsAttackTarget : PerObjectSy
             (
                 m.ExternalAlignment
                 && m.transform.childCount != 0 // has mounted weapon
-                && m.transform.GetChild(0).TryGetComponent<Attacks>(out var a)
+                && m.transform.GetChild(0).TryGetComponent<CanAttack>(out var a)
                 && a.TargetsQueue.Count != 0 // has a target
             )
             {
@@ -31,7 +31,7 @@ public class SystemGetRotationTargetFromMountedWeaponsAttackTarget : PerObjectSy
         if (target == null)
             return;
 
-        var rotates = go.GetComponent<Rotates>();
+        var rotates = go.GetComponent<CanRotate>();
         rotates.TargetRotation = Quaternion.LookRotation(target.transform.position - go.transform.position).eulerAngles;
     }
 }

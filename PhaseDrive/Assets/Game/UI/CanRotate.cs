@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine;
 
-public class Rotates : DataComponent
+public class CanRotate : OnOffDataComponent
 {
     public float Speed;
     public Vector3 TargetRotation;

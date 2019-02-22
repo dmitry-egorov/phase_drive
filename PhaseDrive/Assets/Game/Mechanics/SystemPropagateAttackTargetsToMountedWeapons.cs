@@ -1,12 +1,12 @@
 ﻿using Assets.ECS;
 using UnityEngine.Assertions;
 
-public class SystemPropagateAttackTargetsToMountedWeapons : PerObjectSystem<PropagatesAttackTargetsToMountedWeapons>
+public class SystemPropagateAttackTargetsToMountedWeapons : MultiSystem<PropagatesAttackTargetsToMountedWeapons>
 {
     protected override void Handle(PropagatesAttackTargetsToMountedWeapons component)
     {
         var go = component.gameObject;
-        var a = go.GetComponent<Attacks>();
+        var a = go.GetComponent<CanAttack>();
         Assert.IsNotNull(a);
 
         var t = a.TargetsQueue;
@@ -18,7 +18,7 @@ public class SystemPropagateAttackTargetsToMountedWeapons : PerObjectSystem<Prop
         for (var i = 0; i < mounts.Length; i++)
         {
             var m = mounts[i]; // mount
-            var w = m.GetComponentInChildren<Attacks>(); // weapon
+            var w = m.GetComponentInChildren<CanAttack>(); // weapon
             if (w != null)
             {
                 w.TargetsQueue.Clear();
