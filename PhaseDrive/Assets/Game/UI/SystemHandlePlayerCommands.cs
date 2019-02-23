@@ -8,8 +8,9 @@ public class SystemHandlePlayerCommands : SingletonSystem<MainCamera>
 {
     protected override void Handle(MainCamera c)
     {
-        if (_camera == null) _camera = c.GetComponent<Camera>();
-        if (_localPlayer == null) _localPlayer = Find.RequiredSingleton<LocalPlayer>().gameObject;
+        if (camera == null) camera = c.GetComponent<Camera>();
+        if (localPlayer == null) localPlayer = Find.RequiredSingleton<LocalPlayer>().gameObject;
+        if (selection == null) selection = Find.RequiredSingleton<Selection>();
 
         var lc = Input.GetMouseButtonUp((int)MouseButton.LeftMouse);
         var rc = Input.GetMouseButtonUp((int)MouseButton.RightMouse);
@@ -17,15 +18,12 @@ public class SystemHandlePlayerCommands : SingletonSystem<MainCamera>
         if (!lc && !rc)
             return;
 
-        if
-        (
-            RecursiveRaycast(_camera, Input.mousePosition, out var clickable)
-        )
+        if (RecursiveRaycast(camera, Input.mousePosition, out var clickable))
         {
             var b = lc ? MouseButton.LeftMouse : MouseButton.RightMouse;
             HandleObjectClick(clickable.Root, b);
         }
-        else
+        else if (lc)
         {
             HandleEmptyClick();
         }
@@ -71,14 +69,14 @@ public class SystemHandlePlayerCommands : SingletonSystem<MainCamera>
             mouseButton == MouseButton.LeftMouse
             && clickedEntity.TryGetComponent<CanBeSelected>(out var selectable)
             && clickedEntity.TryGetComponent<OwnedBy>(out var ownable)
-            && ownable.Owner == _localPlayer
+            && ownable.Owner == localPlayer
         )
             // select the clicked entity
         {
             Deselect();
 
             selectable.IsSeclected = true;
-            _currentSelection = selectable;
+            CurrentSelection = clickedEntity;
             return;
         }
 
@@ -86,31 +84,34 @@ public class SystemHandlePlayerCommands : SingletonSystem<MainCamera>
         (
             // right clicked a hostile entity
                mouseButton == MouseButton.RightMouse
-            && _currentSelection.TryGetValue(out var selection)
-            && selection.TryGetComponent<CanAttack>(out var canAttack)
+            && CurrentSelection != null
+            && CurrentSelection.TryGetComponent<CanTarget>(out var canTarget)
             && clickedEntity.TryGetComponent(out ownable)
-            && _localPlayer.IsHostileTowards(ownable.Owner)
+            && localPlayer.IsHostileTowards(ownable.Owner)
         )
             // attack the clicked entity with currently selected units
         {
-            canAttack.TargetsQueue.Add(clickedEntity);
-            //IssueAttack(controlable, clickedEntity);
+            canTarget.Target = clickedEntity;
             return;
         }
-
     }
 
     private void Deselect()
     {
-        if (!_currentSelection.TryGetValue(out var lastSelectable))
+        if (CurrentSelection == null || !CurrentSelection.TryGetComponent<CanBeSelected>(out var selected))
             return;
 
-        lastSelectable.IsSeclected = false;
-        _currentSelection = null;
+        selected.IsSeclected = false;
+        CurrentSelection = null;
     }
 
-    private Camera _camera;
-    private GameObject _localPlayer;
+    private GameObject CurrentSelection
+    {
+        get => selection.Current;
+        set => selection.Current = value;
+    }
 
-    [CanBeNull] private CanBeSelected _currentSelection;
+    private Camera camera;
+    private GameObject localPlayer;
+    private Selection selection;
 }

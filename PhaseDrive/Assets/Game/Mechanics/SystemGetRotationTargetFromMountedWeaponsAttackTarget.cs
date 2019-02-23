@@ -19,11 +19,11 @@ public class SystemGetRotationTargetFromMountedWeaponsAttackTarget : MultiSystem
             (
                 m.ExternalAlignment
                 && m.transform.childCount != 0 // has mounted weapon
-                && m.transform.GetChild(0).TryGetComponent<CanAttack>(out var a)
-                && a.TargetsQueue.Count != 0 // has a target
+                && m.transform.GetChild(0).TryGetComponent<CanTarget>(out var a)
+                && a.Target != null // has a target
             )
             {
-                target = a.TargetsQueue[0];
+                target = a.Target;
                 break;
             }
         }

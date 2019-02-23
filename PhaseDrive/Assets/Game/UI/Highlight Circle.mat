@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Selection
+  m_Name: Highlight Circle
   m_Shader: {fileID: 4800000, guid: 4f4063240d5af7c4dbca49363101128e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4

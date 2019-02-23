@@ -6,11 +6,11 @@ public class SystemPropagateAttackTargetsToMountedWeapons : MultiSystem<Propagat
     protected override void Handle(PropagatesAttackTargetsToMountedWeapons component)
     {
         var go = component.gameObject;
-        var a = go.GetComponent<CanAttack>();
+        var a = go.GetComponent<CanTarget>();
         Assert.IsNotNull(a);
 
-        var t = a.TargetsQueue;
-        if (t.Count == 0)
+        var t = a.Target;
+        if (t == null)
             return;
 
         var mounts = go.GetChildMounts();
@@ -18,14 +18,13 @@ public class SystemPropagateAttackTargetsToMountedWeapons : MultiSystem<Propagat
         for (var i = 0; i < mounts.Length; i++)
         {
             var m = mounts[i]; // mount
-            var w = m.GetComponentInChildren<CanAttack>(); // weapon
+            var w = m.GetComponentInChildren<CanTarget>(); // weapon
             if (w != null)
             {
-                w.TargetsQueue.Clear();
-                w.TargetsQueue.AddRange(t);
+                w.Target = t;
             }
         }
 
-        t.Clear();
+        a.Target = null;
     }
 }

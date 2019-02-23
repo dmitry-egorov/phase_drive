@@ -14,11 +14,11 @@ public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
     protected override void Handle(FiresProjectiles fp)
     {
         var go = fp.gameObject;
-        var a = go.GetComponent<CanAttack>();
-        if (a == null || a.TargetsQueue.Count == 0)
+        var a = go.GetComponent<CanTarget>();
+        if (a == null || a.Target == null)
             return;
 
-        var t = a.TargetsQueue[0].transform.position; // current target position
+        var t = a.Target.transform.position; // current target position
         var from = fp.From.position;
         var to = fp.To.position;
 
