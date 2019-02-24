@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Assets.ECS;
+﻿using Assets.ECS;
 using UnityEngine;
-using UnityEngine.Experimental.UIElements;
 using static Assets.Script_Tools.ShorterVectors;
 
 public class SystemRotateWithMouseLook : MultiSystem<RotatesWithMouseLook>

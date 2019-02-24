@@ -14,7 +14,10 @@ public class SystemsManager : MonoBehaviour
         for (var i = 0; i < systems.Length; i++)
         {
             var s = systems[i];
-            s.Execute();
+            if (s.enabled)
+            {
+                s.Execute();
+            }
         }
     }
 

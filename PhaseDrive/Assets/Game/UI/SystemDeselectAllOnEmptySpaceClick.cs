@@ -1,7 +1,7 @@
 ﻿using Assets.ECS;
 using UnityEngine.Experimental.UIElements;
 
-public class SystemHandleEmptySpaceClick: SingletonSystem<EmptySpace, Selection>
+public class SystemDeselectAllOnEmptySpaceClick: SingletonSystem<EmptySpace, Selection>
 {
     protected override void Handle(EmptySpace c, Selection s)
     {
