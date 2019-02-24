@@ -8,7 +8,7 @@ public class SystemRotateWithMouseLook : MultiSystem<RotatesWithMouseLook>
 {
     protected override void Handle(RotatesWithMouseLook rotates)
     {
-        if (!Input.GetMouseButton((int) MouseButton.MiddleMouse)) return;
+        if (!Input.GetKey(KeyCode.Mouse2)) return;
 
         // x and y are inverted intentionally, since mouse movement in the X axis corresponds to rotation in Y and wise versa
         var dm = v2(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));

@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class Massive: OnOffDataComponent
+public class Massive: DataComponent
 {
     public float Mass;
 }

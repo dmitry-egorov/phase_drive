@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Mount : OnOffDataComponent
+public class Mount : DataComponent
 {
     [FormerlySerializedAs("RequiresShipAlignment")]public bool ExternalAlignment;
 

@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class Igniting : OnOffDataComponent
+public class Igniting : DataComponent
 {
     public float StartTime;
 }

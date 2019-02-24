@@ -1,5 +1,5 @@
 ﻿using Assets.ECS;
 
-public class PropagatesAttackTargetsToMountedWeapons : OnOffDataComponent
+public class PropagatesAttackTargetsToMountedWeapons : DataComponent
 {
 }

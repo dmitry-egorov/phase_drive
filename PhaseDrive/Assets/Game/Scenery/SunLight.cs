@@ -1,5 +1,5 @@
 ﻿using Assets.ECS;
 
-public class SunLight : OnOffDataComponent
+public class SunLight : DataComponent
 {
 }

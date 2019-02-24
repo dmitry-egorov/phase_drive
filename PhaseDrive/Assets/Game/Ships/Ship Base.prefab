@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4508618262425961457
 Transform:
   m_ObjectHideFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c193775b9b397fd41b94fa2a313be787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Root: {fileID: 3022134588216425895}
+  PropagatesClicksToParent: 1
 --- !u!114 &5842918054682532235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5431473699090524628}
   - component: {fileID: 6140682857882070686}
+  - component: {fileID: 1036668651340629438}
   - component: {fileID: 3949110382003470366}
   - component: {fileID: 3769430322705834811}
   - component: {fileID: 2713997431886625007}
@@ -257,6 +258,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSeclected: 0
+--- !u!114 &1036668651340629438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022134588216425895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c193775b9b397fd41b94fa2a313be787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PropagatesClicksToParent: 0
 --- !u!114 &3949110382003470366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e3c9033b8ae2b4ebb3a33ee35b409b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetsQueue: []
+  Target: {fileID: 0}
 --- !u!114 &8540477119469410566
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 ﻿using Assets.ECS;
 
-public class RotatesTowardsWeaponsAttackTarget : OnOffDataComponent
+public class RotatesTowardsWeaponsAttackTarget : DataComponent
 {
 }

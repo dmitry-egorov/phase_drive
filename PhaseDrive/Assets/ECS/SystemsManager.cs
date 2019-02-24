@@ -18,13 +18,13 @@ public class SystemsManager : MonoBehaviour
         }
     }
 
-    public void Add(DataComponent dataComponent)
+    public void Add(BaseDataComponent dataComponent)
     {
         Init();
         AddUnsafe(dataComponent);
     }
 
-    public void Remove(DataComponent dataComponent)
+    public void Remove(BaseDataComponent dataComponent)
     {
         Init();
 
@@ -36,7 +36,7 @@ public class SystemsManager : MonoBehaviour
         }
     }
 
-    private void AddUnsafe(DataComponent dataComponent)
+    private void AddUnsafe(BaseDataComponent dataComponent)
     {
         var t = dataComponent.GetType();
 

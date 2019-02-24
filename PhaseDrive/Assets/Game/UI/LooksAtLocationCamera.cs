@@ -1,5 +1,5 @@
 ﻿using Assets.ECS;
 
-public class LooksAtLocationCamera : OnOffDataComponent
+public class LooksAtLocationCamera : DataComponent
 {
 }

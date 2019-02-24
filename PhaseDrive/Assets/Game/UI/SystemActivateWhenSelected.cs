@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class SystemActivateWhenParentIsSelected : MultiSystem<ActiveWhenSelected>
+public class SystemActivateWhenSelected : MultiSystem<ActiveWhenSelected>
 {
     protected override void Handle(ActiveWhenSelected m)
     {

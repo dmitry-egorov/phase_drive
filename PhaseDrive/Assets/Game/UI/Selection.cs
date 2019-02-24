@@ -1,7 +1,23 @@
 ﻿using Assets.ECS;
-using UnityEngine;
 
-public class Selection : OnOffDataComponent
+public class Selection : DataComponent
 {
-    public GameObject Current;
+    public CanBeSelected Current;
+
+    public void Select(CanBeSelected selectable)
+    {
+        Reset();
+
+        selectable.IsSeclected = true;
+        Current = selectable;
+    }
+
+    public void Reset()
+    {
+        if (Current == null)
+            return;
+
+        Current.IsSeclected = false;
+        Current = null;
+    }
 }

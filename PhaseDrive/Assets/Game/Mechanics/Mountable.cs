@@ -1,5 +1,5 @@
 ﻿using Assets.ECS;
 
-public class Mountable: OnOffDataComponent
+public class Mountable: DataComponent
 {
 }

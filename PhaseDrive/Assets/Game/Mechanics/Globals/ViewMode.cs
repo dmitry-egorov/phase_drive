@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class ViewMode : OnOffDataComponent
+public class ViewMode : DataComponent
 {
     public TheMode Mode;
 

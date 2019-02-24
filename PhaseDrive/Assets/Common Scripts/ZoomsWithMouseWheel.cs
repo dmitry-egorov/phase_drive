@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class ZoomsWithMouseWheel : OnOffDataComponent
+public class ZoomsWithMouseWheel : DataComponent
 {
     public float Sensitivity = 1.0f;
     public float Speed = 0.3f;

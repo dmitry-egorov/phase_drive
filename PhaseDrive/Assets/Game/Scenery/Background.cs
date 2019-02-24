@@ -2,7 +2,7 @@
 using Assets.Script_Tools;
 using UnityEngine;
 
-public class Background : OnOffDataComponent
+public class Background : DataComponent
 {
     public Material material;
 
