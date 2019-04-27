@@ -2,5 +2,5 @@
 
 public class MountsCache: DataComponent
 {
-    public Mount[] Mounts;
+    public CanMount[] Mounts;
 }

@@ -5,7 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4593927551353605816}
+    m_TransformParent: {fileID: 7967675357845367175}
     m_Modifications:
     - target: {fileID: 3996544264549763561, guid: 50f38bae02a160f429d5d6476bdaef9b,
         type: 3}
@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 4799878392344715184, guid: 50f38bae02a160f429d5d6476bdaef9b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4799878392344715184, guid: 50f38bae02a160f429d5d6476bdaef9b,
         type: 3}
@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 3022134588216425895, guid: be4710a65849f614dadd7008779ef03a,
         type: 3}
       propertyPath: m_Name
-      value: Phoenix Nova Core
+      value: Phoenix Nova Template
       objectReference: {fileID: 0}
     - target: {fileID: 5431473699090524628, guid: be4710a65849f614dadd7008779ef03a,
         type: 3}
@@ -250,6 +250,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4710a65849f614dadd7008779ef03a, type: 3}
+--- !u!4 &7967675357845367175 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 517609987742010437, guid: be4710a65849f614dadd7008779ef03a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7619023009848698306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4593927551353605816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6232099851740441466, guid: be4710a65849f614dadd7008779ef03a,

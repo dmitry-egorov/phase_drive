@@ -2,7 +2,7 @@
 using Assets.Script_Tools;
 using UnityEngine;
 
-public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
+public class SystemFireProjectiles : MultiSystem<CanFireProjectiles>
 {
     public Transform ProjectilesParent;
 
@@ -11,7 +11,7 @@ public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
         timer = Find.RequiredSingleton<Timer>();
     }
 
-    protected override void Handle(FiresProjectiles fp)
+    protected override void Handle(CanFireProjectiles fp)
     {
         var go = fp.gameObject;
         var a = go.GetComponent<CanTarget>();
@@ -33,7 +33,7 @@ public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
 
         var time = timer.CurrentTime;
 
-        if (go.TryGetComponent<Igniting>(out var i))
+        if (go.TryGetComponent<Ignites>(out var i))
         {
             var it = fp.IgnitionTime;
             var ist = i.StartTime; // ignition start time
@@ -45,7 +45,7 @@ public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
             // create a projectile
             {
                 var p = Instantiate(fp.ProjectilePrefab, ProjectilesParent);
-                var mass = p.GetComponent<Massive>().Mass;
+                var mass = p.GetComponent<HasMass>().Mass;
                 var mv = p.GetComponent<Moves>();
 
                 p.transform.LookAt(to);
@@ -56,14 +56,14 @@ public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
 
             // start cooldown
             {
-                var nc = go.AddComponent<Cooling>(); // new cooldown
+                var nc = go.AddComponent<CoolsDown>(); // new cooldown
                 nc.StartTime = time;
             }
 
             return;
         }
 
-        if (go.TryGetComponent<Cooling>(out var c))
+        if (go.TryGetComponent<CoolsDown>(out var c))
         {
             var ct = fp.CooldownTime;
             var cst = c.StartTime;
@@ -76,7 +76,7 @@ public class SystemFireProjectiles : MultiSystem<FiresProjectiles>
 
         // start ignition
         {
-            var ni = go.AddComponent<Igniting>(); // new igniting
+            var ni = go.AddComponent<Ignites>(); // new igniting
             ni.StartTime = time;
         }
     }

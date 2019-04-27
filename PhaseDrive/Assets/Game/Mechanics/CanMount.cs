@@ -1,10 +1,9 @@
 ﻿using Assets.ECS;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class Mount : DataComponent
+public class CanMount : DataComponent
 {
-    [FormerlySerializedAs("RequiresShipAlignment")]public bool ExternalAlignment;
+    public bool ExternalAlignment;
 
     void OnDrawGizmos()
     {

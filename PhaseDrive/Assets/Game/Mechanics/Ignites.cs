@@ -1,6 +1,6 @@
 ﻿using Assets.ECS;
 
-public class Cooling : DataComponent
+public class Ignites : DataComponent
 {
     public float StartTime;
 }
